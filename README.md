@@ -1,27 +1,37 @@
+# rails-developer-project-65
+
 ![CI](https://github.com/DimaArsyonov/rails-developer-project-65/actions/workflows/ci.yml/badge.svg)
 [![hexlet-check](https://github.com/DimaArsyonov/rails-developer-project-65/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DimaArsyonov/rails-developer-project-65/actions/workflows/hexlet-check.yml)
 
-# README
+It's my pet bulletin board and third project in Hexlet school
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You may try my project via following link: https://rails-developer-project-65.onrender.com
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To start with your own bulletin board, you need to do following steps:
 
-* System dependencies
+1. Clone the repository and set up JavaScript depedencies and gems:
+   ```bash
+   git clone https://github.com/DimaArsyonov/rails-developer-project-65.git
+   cd rails-developer-project-65
+   bundle install
+   yarn install
+   ```
 
-* Configuration
+2. Set up the database:
+   ```bash
+   bin/rails db:create
+   bin/rails db:migrate
+   ```
+   Please note, that SQLite is used in development and test environments, and PostgreSQL is in production.
 
-* Database creation
+3. Launch the server:
+   ```bash
+   bin/rails s
+   ```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Open the app in your browser:
+   ```
+   http://localhost:3000
+   ```
