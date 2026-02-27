@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    = stylesheet_link_tag :app, 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
+    - if defined?(Sentry) && Sentry.respond_to?(:get_trace_propagation_meta)
+      - trace_meta = Sentry.get_trace_propagation_meta
+      - if trace_meta.present?
+        trace_meta.html_safe
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+  body.d-flex.flex-column.h-100
+    .container.mb-2
+      .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+        .navbar.navbar-expand-md.navbar-light.me-auto
+          a.navbar-brand.me-md-4 href="/" Bulletin board
+
+          .collapse.navbar-collapse#navbarToggler
+            ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
+              li.nav-item.me-2
+                a.nav-link.text-dark href="/" Main page
+
+        ul.nav.nav-pills
+          li.nav-item.me-2
+            form.button_to method="post" action="/auth/github"
+              button.nav-link.text-dark type="submit" data-turbo="false"
+                span.bi.bi-github.me-2
+                | Sign in

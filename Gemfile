@@ -36,6 +36,12 @@ gem "thruster", require: false
 gem "sentry-rails"
 gem "sentry-ruby"
 
+# Use Slim for templates
+gem "slim-rails"
+
+# HTML to Slim converter
+gem "html2slim", git: "https://github.com/slim-template/html2slim.git"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
@@ -47,7 +53,7 @@ group :development, :test do
   gem "bundler-audit", require: false
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", "~> 8.0.4", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
