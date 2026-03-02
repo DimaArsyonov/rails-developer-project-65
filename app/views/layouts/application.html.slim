@@ -24,7 +24,6 @@ html
 
         ul.nav.nav-pills
           li.nav-item.me-2
-            form.button_to method="post" action="/auth/github"
-              button.nav-link.text-dark type="submit" data-turbo="false"
-                span.bi.bi-github.me-2
-                | Sign in
+            = button_to auth_request_path(provider: :github), method: :post, data: { turbo: false }, class: "nav-link text-dark" do
+              span.bi.bi-github.me-2
+              | Sign in

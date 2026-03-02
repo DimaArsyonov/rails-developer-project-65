@@ -55,11 +55,16 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", "~> 8.0.4", require: false
 
+  # Authentication with GitHub
+  gem "omniauth-github"
+  gem "omniauth-rails_csrf_protection"
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
 
  group :development, :test do
+    gem "dotenv-rails"
     gem "sqlite3"
 
     # Slim linter
@@ -79,5 +84,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "faker"
+  gem "minitest", "~> 5.20"
   gem "selenium-webdriver"
 end
