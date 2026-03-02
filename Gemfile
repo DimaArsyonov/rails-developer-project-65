@@ -29,6 +29,10 @@ gem "bootsnap", require: false
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 
+# Authentication with GitHub
+gem "omniauth-github"
+gem "omniauth-rails_csrf_protection"
+
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
@@ -55,21 +59,16 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", "~> 8.0.4", require: false
 
-  # Authentication with GitHub
-  gem "omniauth-github"
-  gem "omniauth-rails_csrf_protection"
+  gem "dotenv-rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "sqlite3"
+
+  # Slim linter
+  gem "slim_lint", require: false
 end
-
- group :development, :test do
-    gem "dotenv-rails"
-    gem "sqlite3"
-
-    # Slim linter
-    gem "slim_lint", require: false
-  end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
