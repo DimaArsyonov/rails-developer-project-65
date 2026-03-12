@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   scope module: :web do
     post "auth/:provider", to: "auth#request", as: :auth_request
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
+    resources :bulletins
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

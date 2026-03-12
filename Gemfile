@@ -20,6 +20,9 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
+# Use Active Storage validations
+gem "active_storage_validations"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -40,6 +43,9 @@ gem "thruster", require: false
 gem "sentry-rails"
 gem "sentry-ruby"
 
+# Easy form builder for Rails
+gem "simple_form"
+
 # Use Slim for templates
 gem "slim-rails"
 
@@ -48,6 +54,7 @@ gem "html2slim", git: "https://github.com/slim-template/html2slim.git"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+gem "ruby-vips"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -68,6 +75,9 @@ group :development, :test do
 
   # Slim linter
   gem "slim_lint", require: false
+
+  # Fake data generator
+  gem "faker"
 end
 
 group :development do
@@ -82,7 +92,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "faker"
   gem "minitest", "~> 5.20"
   gem "selenium-webdriver"
 end

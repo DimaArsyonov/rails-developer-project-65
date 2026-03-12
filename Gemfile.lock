@@ -54,6 +54,12 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_storage_validations (3.0.3)
+      activejob (>= 6.1.4)
+      activemodel (>= 6.1.4)
+      activestorage (>= 6.1.4)
+      activesupport (>= 6.1.4)
+      marcel (>= 1.0.3)
     activejob (7.2.3)
       activesupport (= 7.2.3)
       globalid (>= 0.3.6)
@@ -373,6 +379,9 @@ GEM
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
+    simple_form (5.4.1)
+      actionpack (>= 7.0)
+      activemodel (>= 7.0)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -450,6 +459,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  active_storage_validations
   bootsnap
   brakeman (~> 8.0.4)
   bundler-audit
@@ -471,9 +481,11 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.2.0)
   rubocop-rails-omakase
+  ruby-vips
   selenium-webdriver
   sentry-rails
   sentry-ruby
+  simple_form
   slim-rails
   slim_lint
   sqlite3
