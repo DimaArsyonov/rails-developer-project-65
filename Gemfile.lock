@@ -196,7 +196,9 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (5.27.0)
+    minitest (6.0.2)
+      drb (~> 2.0)
+      prism (~> 1.5)
     msgpack (1.8.0)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
@@ -473,7 +475,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kamal
-  minitest (~> 5.20)
+  minitest (~> 6.0)
   omniauth-github
   omniauth-rails_csrf_protection
   pg
