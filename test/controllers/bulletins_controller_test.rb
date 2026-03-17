@@ -4,11 +4,26 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @bulletin = bulletins(:one)
 
-    @attrs = {
-      title: @bulletin.title,
-      description: @bulletin.description,
-      image: fixture_file_upload("bulletin_test.jpg", "image/jpeg")
-    }
+    @bulletin.image.attach(
+      io: File.open(Rails.root.join("test/fixtures/files/bulletin_test.jpg")),
+      filename: "bulletin_test.jpg",
+      content_type: "image/jpeg"
+    )
+
+    @user = users(:one)
+
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+      provider: "github",
+      uid: @user.id,
+      info: {
+        email: @user.email,
+        name: @user.name
+      }
+    )
+
+    get callback_auth_url(provider: "github")
   end
 
   test "should get index" do
@@ -22,12 +37,13 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create bulletin" do
-    post bulletins_url, params: { bulletin: @attrs }
+    file = fixture_file_upload(Rails.root.join("test/fixtures/files/bulletin_test.jpg"), "image/jpeg")
 
-    bulletin = Bulletin.find_by(@attrs.except(:image))
+    assert_difference("Bulletin.count") do
+      post bulletins_url, params: { bulletin: { description: @bulletin.description, title: @bulletin.title, category_id: categories(:one).id, image: file } }
+    end
 
-    assert { bulletin }
-    assert_redirected_to bulletin_url(bulletin)
+    assert_redirected_to bulletin_url(Bulletin.last)
   end
 
   test "should show bulletin" do
@@ -41,7 +57,8 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bulletin" do
-    patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title } }
+    file = fixture_file_upload(Rails.root.join("test/fixtures/files/bulletin_test.jpg"), "image/jpeg")
+    patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title,  image: file } }
     assert_redirected_to bulletin_url(@bulletin)
   end
 
