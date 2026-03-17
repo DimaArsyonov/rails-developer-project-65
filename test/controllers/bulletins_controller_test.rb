@@ -3,6 +3,12 @@ require "test_helper"
 class BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @bulletin = bulletins(:one)
+
+    @attrs = {
+      title: @bulletin.title,
+      description: @bulletin.description,
+      image: fixture_file_upload("bulletin_test.jpg", "image/jpeg")
+    }
   end
 
   test "should get index" do
@@ -16,11 +22,12 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create bulletin" do
-    assert_difference("Bulletin.count") do
-      post bulletins_url, params: { bulletin: { description: @bulletin.description, title: @bulletin.title } }
-    end
+    post bulletins_url, params: { bulletin: @attrs }
 
-    assert_redirected_to bulletin_url(Bulletin.last)
+    bulletin = Bulletin.find_by(@attrs.except(:image))
+
+    assert { bulletin }
+    assert_redirected_to bulletin_url(bulletin)
   end
 
   test "should show bulletin" do

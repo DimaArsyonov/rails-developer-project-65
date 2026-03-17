@@ -5,11 +5,9 @@ one:
   description: <%= Faker::Lorem.paragraph_by_chars(number: 256) %>
   category: one
   user: one
-  image: <%= fixture_file_upload('bulletin_test', 'image/jpeg') %>
 
 two:
   title: <%= Faker::Lorem.sentence %>
   description: <%= Faker::Lorem.paragraph_by_chars(number: 256) %>
   category: two
   user: two
-  image: <%= fixture_file_upload('bulletin_test.jpg', 'image/jpeg') %>
