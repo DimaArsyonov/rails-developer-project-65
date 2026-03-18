@@ -3,6 +3,27 @@ require "application_system_test_case"
 class BulletinsTest < ApplicationSystemTestCase
   setup do
     @bulletin = bulletins(:one)
+
+    @bulletin.image.attach(
+      io: File.open(Rails.root.join("test/fixtures/files/bulletin_test.jpg")),
+      filename: "bulletin_test.jpg",
+      content_type: "image/jpeg"
+    )
+
+    @user = users(:one)
+
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+      provider: "github",
+      uid: @user.id,
+      info: {
+        email: @user.email,
+        name: @user.name
+      }
+    )
+
+    get callback_auth_url(provider: "github")
   end
 
   test "visiting the index" do
