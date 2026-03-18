@@ -18,7 +18,7 @@ class BulletinsTest < ApplicationSystemTestCase
     fill_in "Title", with: @bulletin.title
     click_on "Create Bulletin"
 
-    assert_text "Bulletin was successfully created"
+    assert_text "Bulletin was successfully created."
     click_on "Back"
   end
 
@@ -30,7 +30,7 @@ class BulletinsTest < ApplicationSystemTestCase
     fill_in "Title", with: @bulletin.title
     click_on "Update Bulletin"
 
-    assert_text "Bulletin was successfully updated"
+    assert_text "Bulletin was successfully updated."
     click_on "Back"
   end
 
