@@ -1,6 +1,6 @@
 class Web::BulletinsController < Web::ApplicationController
-  before_action :require_login, only: %i[new create]
-  before_action :set_bulletin, only: %i[ show edit update destroy ]
+  before_action :require_login, only: %i[new create edit]
+  before_action :set_bulletin, only: %i[ show edit update ]
 
   # GET /bulletins or /bulletins.json
   def index
@@ -48,16 +48,6 @@ class Web::BulletinsController < Web::ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @bulletin.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /bulletins/1 or /bulletins/1.json
-  def destroy
-    @bulletin.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to bulletins_path, notice: "Bulletin was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
     end
   end
 

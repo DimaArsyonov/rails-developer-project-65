@@ -37,6 +37,7 @@ class BulletinsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
+    attach_file "Image", Rails.root.join("test/fixtures/files/bulletin_test.jpg")
     click_on "Create Bulletin"
 
     assert_text "Bulletin was successfully created."
@@ -53,12 +54,5 @@ class BulletinsTest < ApplicationSystemTestCase
 
     assert_text "Bulletin was successfully updated."
     click_on "Back"
-  end
-
-  test "should destroy Bulletin" do
-    visit bulletin_url(@bulletin)
-    click_on "Destroy this bulletin", match: :first
-
-    assert_text "Bulletin was successfully destroyed"
   end
 end

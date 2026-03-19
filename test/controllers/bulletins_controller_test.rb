@@ -50,12 +50,4 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title,  image: file } }
     assert_redirected_to bulletin_url(@bulletin)
   end
-
-  test "should destroy bulletin" do
-    assert_difference("Bulletin.count", -1) do
-      delete bulletin_url(@bulletin)
-    end
-
-    assert_redirected_to bulletins_url
-  end
 end
