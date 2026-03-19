@@ -6,4 +6,9 @@ class Web::AuthController < Web::ApplicationController
     session[:user_id] = user.id
     redirect_to root_path, notice: "Signed in with #{auth["provider"]}!"
   end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path, notice: "Signed out!"
+  end
 end

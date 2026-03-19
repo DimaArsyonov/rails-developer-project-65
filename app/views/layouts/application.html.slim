@@ -33,9 +33,12 @@ html
 
         ul.nav.nav-pills
           li.nav-item.me-2
-            = button_to auth_request_path(provider: :github), method: :post, data: { turbo: false }, class: "nav-link text-dark" do
-              span.bi.bi-github.me-2
-              | Sign in
+            - if current_user
+              = button_to "Logout", logout_path, method: :delete, class: "btn btn-danger"
+            - else
+              = button_to auth_request_path(provider: :github), method: :post, data: { turbo: false }, class: "nav-link text-dark" do
+                span.bi.bi-github.me-2
+                | Sign in
   = render 'shared/flash'
   = yield
   footer.footer.mt-auto.py-3.bg-light
