@@ -12,18 +12,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     @user = users(:one)
 
-    OmniAuth.config.test_mode = true
-
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
-      provider: "github",
-      uid: @user.id,
-      info: {
-        email: @user.email,
-        name: @user.name
-      }
-    )
-
-    get callback_auth_url(provider: "github")
+    sign_in(@user)
   end
 
   test "should get index" do

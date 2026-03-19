@@ -23,7 +23,7 @@ class BulletinsTest < ApplicationSystemTestCase
       }
     )
 
-    get callback_auth_url(provider: "github")
+    visit callback_auth_url(provider: "github")
   end
 
   test "visiting the index" do
