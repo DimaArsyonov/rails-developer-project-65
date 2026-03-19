@@ -4,6 +4,8 @@ class BulletinsTest < ApplicationSystemTestCase
   setup do
     @bulletin = bulletins(:one)
 
+    @category = categories(:one)
+
     @bulletin.image.attach(
       io: File.open(Rails.root.join("test/fixtures/files/bulletin_test.jpg")),
       filename: "bulletin_test.jpg",
@@ -38,6 +40,7 @@ class BulletinsTest < ApplicationSystemTestCase
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
     attach_file "bulletin_image", Rails.root.join("test/fixtures/files/bulletin_test.jpg")
+    find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
     click_on "Create Bulletin"
 
     assert_text "Bulletin was successfully created."
