@@ -37,7 +37,7 @@ class BulletinsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
-    attach_file "Image", Rails.root.join("test/fixtures/files/bulletin_test.jpg")
+    attach_file "bulletin_image", Rails.root.join("test/fixtures/files/bulletin_test.jpg")
     click_on "Create Bulletin"
 
     assert_text "Bulletin was successfully created."
