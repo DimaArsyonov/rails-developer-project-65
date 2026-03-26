@@ -7,7 +7,7 @@ ru:
   my_bulletins: "Мои объявления"
   add: "Добавить"
   add_bulletin: "Добавить объявление"
-  update_bulletin: "Редактировать объявление"
+  update_bulletin: "Обновить объявление"
   bulletins: "Объявления"
   signed_in: "Вход выполнен с помощью"
   signed_out: "Выход выполнен"

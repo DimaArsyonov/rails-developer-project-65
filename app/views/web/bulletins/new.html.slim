@@ -12,4 +12,4 @@ main.mt-4.mb-5.pb-5
                           collection: @categories.map { |c| [t("categories.#{c.name.downcase}"), c.id] },
                           input_html: { class: 'form-control' }
           .mb-3 = f.input :image, as: :file, required: true, input_html: { class: "form-control" }
-          .mb-3 = f.button :submit, label: t("simple_form.create_bulletin"), class: "btn btn-primary mt-3"
+          .mb-3 = f.button :submit, class: "btn btn-primary mt-3"
