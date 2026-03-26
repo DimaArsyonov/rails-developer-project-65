@@ -29,12 +29,12 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit index_url
+    visit root_path
     assert_selector "h1", text: I18n.t(:bulletins)
   end
 
   test "should create bulletin" do
-    visit index_url
+    visit root_path
     click_on I18n.t(:add)
 
     fill_in "Description", with: @bulletin.description

@@ -2,7 +2,7 @@
 == render @bulletin
 
 div
-  => link_to "Edit this bulletin", edit_bulletin_path(@bulletin)
+  => link_to t(:update_bulletin), edit_bulletin_path(@bulletin)
   '|
   =< link_to "Back to bulletins", bulletins_path
 
