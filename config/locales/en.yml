@@ -7,6 +7,7 @@ en:
   my_bulletins: "My bulletins"
   add: "Add"
   add_bulletin: "Add bulletin"
+  update_bulletin: "Update bulletin"
   bulletins: "Bulletins"
   signed_in: "Signed in with"
   signed_out: "Signed out"

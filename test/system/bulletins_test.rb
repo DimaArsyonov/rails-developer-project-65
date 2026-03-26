@@ -29,13 +29,13 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit bulletins_url
+    visit index_url
     assert_selector "h1", text: I18n.t(:bulletins)
   end
 
   test "should create bulletin" do
-    visit bulletins_url
-    click_on I18n.t(:add_bulletin)
+    visit index_url
+    click_on I18n.t(:add)
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
@@ -49,7 +49,7 @@ class BulletinsTest < ApplicationSystemTestCase
 
   test "should update Bulletin" do
     visit bulletin_url(@bulletin)
-    click_on "Edit this bulletin", match: :first
+    click_on I18n.t(:update_bulletin), match: :first
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
