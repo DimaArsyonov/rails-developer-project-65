@@ -4,11 +4,11 @@ class Web::AuthController < Web::ApplicationController
     user = User.find_or_create_by(email: auth["info"]["email"], name: auth["info"]["name"])
     puts user.errors.full_messages
     session[:user_id] = user.id
-    redirect_to root_path, notice: "Signed in with #{auth["provider"]}!"
+    redirect_to root_path, notice: "#{t(:signed_in)} #{auth["provider"]}!"
   end
 
   def logout
     session[:user_id] = nil
-    redirect_to root_path, notice: "Signed out!"
+    redirect_to root_path, notice: "#{t(:signed_out)}"
   end
 end

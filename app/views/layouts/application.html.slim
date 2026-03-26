@@ -15,32 +15,32 @@ html
     .container.mb-2
       .d-flex.flex-wrap.align-items-center.py-2.border-bottom
         .navbar.navbar-expand-md.navbar-light.me-auto
-          a.navbar-brand.me-md-4 href="/" Bulletin board
+          a.navbar-brand.me-md-4 href="/" = t(:board)
 
           .collapse.navbar-collapse#navbarToggler
             ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
               - if current_user
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/" Main page
+                  a.nav-link.text-dark href="/" = t(:main)
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/bulletins" My bulletins
+                  a.nav-link.text-dark href="/bulletins" = t(:my_bulletins)
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/bulletins/new" Add bulletin
+                  a.nav-link.text-dark href="/bulletins/new" = t(:add)
               - else
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/" Main page
+                  a.nav-link.text-dark href="/" = t(:main)
               
 
         ul.nav.nav-pills
           li.nav-item.me-2
             - if current_user
-              = button_to "Logout", logout_path, method: :delete, class: "btn btn-danger"
+              = button_to "#{t(:logout)}", logout_path, method: :delete, class: "btn btn-danger"
             - else
               = button_to auth_request_path(provider: :github), method: :post, data: { turbo: false }, class: "nav-link text-dark" do
                 span.bi.bi-github.me-2
-                | Sign in
+                = t(:sign_in)
   = render 'shared/flash'
   = yield
   footer.footer.mt-auto.py-3.bg-light
       .container
-        span.text-muted © #{Time.current.year} #{t(:blog)}. #{t(:all_rights)}
+        span.text-muted © #{Time.current.year} #{t(:board)}. #{t(:all_rights)}

@@ -1,0 +1,18 @@
+ru:
+  board: "Доска объявлений"
+  main: "Главная"
+  sign_in: "Войти"
+  logout: "Выйти"
+  all_rights: "Все права защищены"
+  my_bulletins: "Мои объявления"
+  add: "Добавить"
+  add_bulletin: "Добавить объявление"
+  bulletins: "Объявления"
+  signed_in: "Вход выполнен с помощью"
+  signed_out: "Выход выполнен"
+  activerecord:
+    models:
+      bulletin: "объявление"
+  datetime:
+    distance_in_words:
+      ago: "%{time} назад"
