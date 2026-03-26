@@ -30,20 +30,20 @@ class BulletinsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit bulletins_url
-    assert_selector "h1", text: "Bulletins"
+    assert_selector "h1", text: I18n.t(:bulletins)
   end
 
   test "should create bulletin" do
     visit bulletins_url
-    click_on "New bulletin"
+    click_on I18n.t(:add_bulletin)
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
     attach_file "bulletin_image", Rails.root.join("test/fixtures/files/bulletin_test.jpg")
     find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
-    click_on "Create Bulletin"
+    click_on I18n.t(:create_bulletin)
 
-    assert_text "Bulletin was successfully created."
+    assert_text I18n.t(:bulletin_created)
     click_on "Back"
   end
 
@@ -53,9 +53,9 @@ class BulletinsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
-    click_on "Update Bulletin"
+    click_on I18n.t(:update_bulletin)
 
-    assert_text "Bulletin was successfully updated."
+    assert_text I18n.t(:bulletin_updated)
     click_on "Back"
   end
 end

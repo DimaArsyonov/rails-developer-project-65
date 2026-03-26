@@ -29,7 +29,7 @@ class Web::BulletinsController < Web::ApplicationController
 
     respond_to do |format|
       if @bulletin.save
-        format.html { redirect_to @bulletin, notice: "Bulletin was successfully created." }
+        format.html { redirect_to @bulletin, notice: t(:bulletin_created) }
         format.json { render :show, status: :created, location: @bulletin }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class Web::BulletinsController < Web::ApplicationController
   def update
     respond_to do |format|
       if @bulletin.update(bulletin_params)
-        format.html { redirect_to @bulletin, notice: "Bulletin was successfully updated.", status: :see_other }
+        format.html { redirect_to @bulletin, notice: t(:bulletin_updated), status: :see_other }
         format.json { render :show, status: :ok, location: @bulletin }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class Web::BulletinsController < Web::ApplicationController
 
     def require_login
       unless current_user
-        redirect_to root_path, alert: "You must be logged in to access this section"
+        redirect_to root_path, alert: t(:must_be_logged_in)
       end
     end
 end

@@ -10,6 +10,9 @@ en:
   bulletins: "Bulletins"
   signed_in: "Signed in with"
   signed_out: "Signed out"
+  bulletin_created: "Bulletin was successfully created."
+  bulletin_updated: "Bulletin was successfully updated."
+  must_be_logged_in: "You must be logged in to access this section."
   activerecord:
     models:
       bulletin: "bulletin"

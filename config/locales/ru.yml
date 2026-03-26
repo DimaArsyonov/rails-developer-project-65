@@ -10,6 +10,9 @@ ru:
   bulletins: "Объявления"
   signed_in: "Вход выполнен с помощью"
   signed_out: "Выход выполнен"
+  bulletin_created: "Объявление успешно создано."
+  bulletin_updated: "Объявление успешно обновлено."
+  must_be_logged_in: "Вы должны войти, чтобы получить доступ к этому разделу."
   activerecord:
     models:
       bulletin: "объявление"
