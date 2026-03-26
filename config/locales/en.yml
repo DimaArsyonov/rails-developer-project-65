@@ -17,6 +17,9 @@ en:
   activerecord:
     models:
       bulletin: "bulletin"
+  helpers:
+    submit:
+      create: "Create %{model}"
   datetime:
     distance_in_words:
       ago: "%{time} ago"

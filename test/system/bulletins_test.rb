@@ -41,7 +41,7 @@ class BulletinsTest < ApplicationSystemTestCase
     fill_in I18n.t("simple_form.labels.bulletin.title"), with: @bulletin.title
     attach_file I18n.t("simple_form.labels.bulletin.image"), Rails.root.join("test/fixtures/files/bulletin_test.jpg")
     find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
-    click_on I18n.t(:create_bulletin)
+    click_on I18n.t("helpers.submit.create", model: I18n.t("activerecord.models.bulletin"))
 
     assert_text I18n.t(:bulletin_created)
     click_on "Back"
@@ -51,8 +51,8 @@ class BulletinsTest < ApplicationSystemTestCase
     visit bulletin_url(@bulletin)
     click_on I18n.t(:update_bulletin), match: :first
 
-    fill_in I18n.t("simple_form.labels.bulletin.description"), with: @bulletin.description
-    fill_in I18n.t("simple_form.labels.bulletin.title"), with: @bulletin.title
+    fill_in "Description", with: @bulletin.description
+    fill_in "Title", with: @bulletin.title
     click_on I18n.t(:update_bulletin)
 
     assert_text I18n.t(:bulletin_updated)

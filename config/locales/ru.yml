@@ -17,6 +17,9 @@ ru:
   activerecord:
     models:
       bulletin: "объявление"
+  helpers:
+    submit:
+      create: "Создать %{model}"
   datetime:
     distance_in_words:
       ago: "%{time} назад"
