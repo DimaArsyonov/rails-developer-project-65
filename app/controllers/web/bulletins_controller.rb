@@ -5,6 +5,7 @@ class Web::BulletinsController < Web::ApplicationController
   # GET /bulletins or /bulletins.json
   def index
     @bulletins = Bulletin.order(created_at: :desc)
+    authorize @bulletins
   end
 
   # GET /bulletins/1 or /bulletins/1.json
@@ -15,6 +16,7 @@ class Web::BulletinsController < Web::ApplicationController
   def new
     @bulletin = Bulletin.new
     @categories = Category.all
+    authorize @bulletin
   end
 
   # GET /bulletins/1/edit
@@ -26,6 +28,7 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.new(bulletin_params)
     @categories = Category.all
     @bulletin.user = current_user
+    authorize @bulletin
 
     respond_to do |format|
       if @bulletin.save
@@ -55,6 +58,7 @@ class Web::BulletinsController < Web::ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bulletin
       @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
     end
 
     # Only allow a list of trusted parameters through.

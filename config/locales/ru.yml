@@ -11,9 +11,15 @@ ru:
   bulletins: "Объявления"
   signed_in: "Вход выполнен с помощью"
   signed_out: "Выход выполнен"
-  bulletin_created: "Объявление успешно создано."
-  bulletin_updated: "Объявление успешно обновлено."
-  must_be_logged_in: "Вы должны войти, чтобы получить доступ к этому разделу."
+  bulletin_created: "Объявление успешно создано"
+  bulletin_updated: "Объявление успешно обновлено"
+  must_be_logged_in: "Вы должны войти, чтобы получить доступ к этому разделу"
+  must_be_admin: "Вы должны быть администратором, чтобы получить доступ к этому разделу"
+  must_be_authorized_user: "Вы не авторизованы для выполнения этого действия"
+  admin_panel: "Панель администратора"
+  bulletins_on_moderate: "Объявления на модерации"
+  all_bulletins: "Все объявления"
+  all_categories: "Все категории"
   activerecord:
     models:
       bulletin: "объявление"

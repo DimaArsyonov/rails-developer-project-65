@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
     delete "/logout", to: "auth#logout", as: :logout
     resources :bulletins
+    get "/admin", to: "admin#index", as: :admin
+    namespace :admin do
+      resources :categories
+      resources :bulletins
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

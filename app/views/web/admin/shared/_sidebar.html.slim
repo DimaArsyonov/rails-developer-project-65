@@ -1,0 +1,12 @@
+ul.nav.flex-column.nav-pills
+  li.nav-item
+    = link_to "#{t(:bulletins_on_moderate)}", admin_path,
+    class: "nav-link w-100 py-2 px-3 #{current_page?(admin_path) ? 'active' : 'link-dark'}"
+
+  li.nav-item
+    = link_to "#{t(:all_bulletins)}", admin_bulletins_path,
+    class: "nav-link w-100 py-2 px-3 #{current_page?(admin_bulletins_path) ? 'active' : 'link-dark'}"
+
+  li.nav-item
+    = link_to "#{t(:all_categories)}", admin_categories_path,
+    class: "nav-link w-100 py-2 px-3 #{current_page?(admin_categories_path) ? 'active' : 'link-dark'}"

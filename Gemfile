@@ -56,6 +56,9 @@ gem "html2slim", git: "https://github.com/slim-template/html2slim.git"
 gem "image_processing", "~> 1.2"
 gem "ruby-vips"
 
+# Authorization with Pundit
+gem "pundit"
+
 # Internationalization and localization [https://guides.rubyonrails.org/i18n.html]
 gem "rails-i18n"
 

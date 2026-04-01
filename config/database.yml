@@ -29,7 +29,7 @@ production:
     adapter: postgresql
     encoding: unicode
     pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    database: <%= ENV.fetch("DATABASE_NAME") { 'rails_developer_project_65_database' } %>
+    database: <%= ENV.fetch("DATABASE_NAME") { 'rails-developer-project-65-database-1' } %>
     host: <%= ENV["DATABASE_HOST"] %>
     port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
     username: <%= ENV["DATABASE_USERNAME"] %>

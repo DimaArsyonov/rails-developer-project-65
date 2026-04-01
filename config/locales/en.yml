@@ -11,9 +11,15 @@ en:
   bulletins: "Bulletins"
   signed_in: "Signed in with"
   signed_out: "Signed out"
-  bulletin_created: "Bulletin was successfully created."
-  bulletin_updated: "Bulletin was successfully updated."
-  must_be_logged_in: "You must be logged in to access this section."
+  bulletin_created: "Bulletin was successfully created"
+  bulletin_updated: "Bulletin was successfully updated"
+  must_be_logged_in: "You must be logged in to access this section"
+  must_be_admin: "You must be an administrator to access this section"
+  must_be_authorized_user: "You are not authorized to perform this action"
+  admin_panel: "Admin panel"
+  bulletins_on_moderate" : "Bulletins on moderate"
+  all_bulletins: "All bulletins"
+  all_categories: "All categories"
   activerecord:
     models:
       bulletin: "bulletin"
