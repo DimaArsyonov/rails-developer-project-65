@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-3
+      = render "web/admin/shared/sidebar"
+    .col-md-9
+      h1 = t(:new_category)
+
+      = simple_form_for [:admin, @category] do |f|
+        .mb-3 = f.input :name, input_html: { class: "form-control" }
+        .mb-3 = f.button :submit, class: "btn btn-primary mt-3"

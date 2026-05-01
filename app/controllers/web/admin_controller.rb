@@ -1,10 +1,8 @@
 class Web::AdminController < Web::ApplicationController
   before_action :require_admin
-  # before_action :set_bulletin, only: %i[ show edit update ]
 
-  # GET /admin
   def index
-    @bulletins = Bulletin.order(created_at: :desc)
+    @bulletins = Bulletin.where(state: :under_moderation).order(created_at: :desc)
   end
 
   private

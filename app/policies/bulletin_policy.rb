@@ -29,4 +29,20 @@ class BulletinPolicy
   def update?
     bulletin.user_id == user.id
   end
+
+  def publish?
+    user.admin?
+  end
+
+  def reject?
+    user.admin?
+  end
+
+  def to_moderate?
+    user.admin?
+  end
+
+  def archive?
+    user.admin?
+  end
 end

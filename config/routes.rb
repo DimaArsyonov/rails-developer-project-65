@@ -6,8 +6,16 @@ Rails.application.routes.draw do
     post "auth/:provider", to: "auth#request", as: :auth_request
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
     delete "/logout", to: "auth#logout", as: :logout
-    resources :bulletins
+    resources :bulletins do
+      member do
+        patch :to_moderate
+        patch :publish
+        patch :reject
+        patch :archive
+      end
+    end
     get "/admin", to: "admin#index", as: :admin
+    get "/profile", to: "profiles#show", as: :profile
     namespace :admin do
       resources :categories
       resources :bulletins

@@ -8,6 +8,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.5.2)
+      concurrent-ruby (~> 1.0)
     actioncable (7.2.3.1)
       actionpack (= 7.2.3.1)
       activesupport (= 7.2.3.1)
@@ -464,6 +466,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  aasm
   active_storage_validations
   bootsnap
   brakeman (~> 8.0.4)

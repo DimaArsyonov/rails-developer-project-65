@@ -3,4 +3,27 @@
     .col-md-3
       = render "web/admin/shared/sidebar"
     .col-md-9
-      h1 Bulletins
+      h1 = t(:bulletins)
+
+      table.table.table-borderless
+        thead
+          tr
+            th = t(:title)
+            th = t(:state)
+            th = t(:date_created)
+            th = t(:actions)
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = link_to bulletin.title, bulletin_path(bulletin)
+              td = t("aasm.states.#{bulletin.state}")
+              td = time_ago_in_words(bulletin.created_at)
+
+              td
+                = link_to t(:show), bulletin_path(bulletin), class: 'me-2'
+
+                - if bulletin.may_archive?
+                  = link_to t(:archive),
+                    archive_bulletin_path(bulletin),
+                    data: { turbo_method: :patch, turbo_confirm: t(:confirm_archive) },
+                    class: 'text-danger'
