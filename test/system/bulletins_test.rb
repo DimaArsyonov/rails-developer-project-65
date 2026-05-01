@@ -54,7 +54,7 @@ class BulletinsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
-    click_on I18n.t(:update_bulletin)
+    click_on I18n.t("helpers.submit.update", model: I18n.t("activerecord.models.bulletin"))
 
     assert_text I18n.t(:bulletin_updated)
   end
