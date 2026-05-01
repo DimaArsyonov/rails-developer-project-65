@@ -49,8 +49,8 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test "should update Bulletin" do
-    visit bulletin_url(@bulletin)
-    click_on I18n.t(:update_bulletin), match: :first
+    visit profile_url
+    click_on I18n.t(:edit)
 
     fill_in "Description", with: @bulletin.description
     fill_in "Title", with: @bulletin.title
