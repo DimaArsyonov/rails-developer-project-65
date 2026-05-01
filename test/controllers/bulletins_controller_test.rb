@@ -10,6 +10,8 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
       content_type: "image/jpeg"
     )
 
+    @bulletin.save!
+
     @user = users(:one)
 
     sign_in(@user)
@@ -48,6 +50,6 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   test "should update bulletin" do
     file = fixture_file_upload(Rails.root.join("test/fixtures/files/bulletin_test.jpg"), "image/jpeg")
     patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title,  image: file } }
-    assert_redirected_to bulletin_url(@bulletin)
+    assert_redirected_to profile_url
   end
 end

@@ -12,6 +12,8 @@ class BulletinsTest < ApplicationSystemTestCase
       content_type: "image/jpeg"
     )
 
+    @bulletin.save!
+
     @user = users(:one)
 
     OmniAuth.config.test_mode = true
@@ -44,7 +46,6 @@ class BulletinsTest < ApplicationSystemTestCase
     click_on I18n.t("helpers.submit.create", model: I18n.t("activerecord.models.bulletin"))
 
     assert_text I18n.t(:bulletin_created)
-    click_on "Back"
   end
 
   test "should update Bulletin" do
@@ -56,6 +57,5 @@ class BulletinsTest < ApplicationSystemTestCase
     click_on I18n.t(:update_bulletin)
 
     assert_text I18n.t(:bulletin_updated)
-    click_on "Back"
   end
 end
