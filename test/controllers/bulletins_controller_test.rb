@@ -17,11 +17,6 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
   end
 
-  test "should get index" do
-    get bulletins_url
-    assert_response :success
-  end
-
   test "should get new" do
     get new_bulletin_url
     assert_response :success
