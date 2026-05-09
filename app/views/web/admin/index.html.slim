@@ -37,3 +37,5 @@
                     archive_bulletin_path(bulletin),
                     data: { turbo_method: :patch, turbo_confirm: t(:confirm_archive) },
                     class: 'text-danger'
+      .mt-3
+        = paginate @bulletins, theme: "bootstrap-5"

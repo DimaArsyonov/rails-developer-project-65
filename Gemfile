@@ -40,6 +40,13 @@ gem "kamal", require: false
 gem "omniauth-github"
 gem "omniauth-rails_csrf_protection"
 
+# Pagination with Kaminari
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
+
+# Search and filtering with Ransack
+gem "ransack"
+
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 

@@ -4,7 +4,8 @@ class Web::Admin::BulletinsController < Web::AdminController
 
   # GET /bulletins
   def index
-    @bulletins = Bulletin.order(created_at: :desc)
+    @q = Bulletin.ransack(params[:q])
+    @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
     authorize @bulletins
   end
 end

@@ -50,6 +50,11 @@ en:
   bulletins_on_moderate" : "Bulletins on moderate"
   all_bulletins: "All bulletins"
   all_categories: "All categories"
+  search_by_title: "Search by title"
+  choose_category: "Choose category"
+  search: "Search"
+  reset: "Reset"
+  by_state: "By State"
   aasm:
     states:
       draft: "Draft"
@@ -67,3 +72,9 @@ en:
   datetime:
     distance_in_words:
       ago: "%{time} ago"
+  views:
+    pagination:
+      first: "«"
+      last: "»"
+      previous: "‹"
+      next: "›"

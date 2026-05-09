@@ -50,6 +50,11 @@ ru:
   bulletins_on_moderate: "Объявления на модерации"
   all_bulletins: "Все объявления"
   all_categories: "Все категории"
+  search_by_title: "Искать по названию объявления"
+  choose_category: "Выбрать категорию"
+  search: "Искать"
+  reset: "Сброс"
+  by_state: "По состоянию"
   aasm:
     states:
       draft: "Черновик"
@@ -67,3 +72,9 @@ ru:
   datetime:
     distance_in_words:
       ago: "%{time} назад"
+  views:
+    pagination:
+      first: "«"
+      last: "»"
+      previous: "‹"
+      next: "›"

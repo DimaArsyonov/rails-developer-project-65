@@ -4,7 +4,7 @@ class Web::Admin::CategoriesController < Web::AdminController
 
   # GET /categories
   def index
-    @categories = Category.order(id: :asc)
+    @categories = Category.order(id: :asc).page(params[:page]).per(10)
   end
 
   def new

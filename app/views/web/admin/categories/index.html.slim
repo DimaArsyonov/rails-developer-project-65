@@ -24,3 +24,6 @@
                 = link_to t(:delete), admin_category_path(category), 
                                       data: { turbo_method: :delete, turbo_confirm: t(:confirm_delete) },
                                       class: 'text-danger'
+      .mt-3
+        = paginate @categories, theme: "bootstrap-5"
+

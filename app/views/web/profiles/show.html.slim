@@ -8,6 +8,25 @@
 
         = link_to t(:add_bulletin), new_bulletin_path
 
+        = search_form_for @q, url: profile_path do |f|
+          .row.my-2
+            .col-6
+              .form-group.mb-3
+                = f.search_field :title_cont, class: "form-control string required"
+                small.form-text.text-muted = t(:search_by_title)
+
+            .col-4
+              .form-group.mb-3
+                = f.select :state_eq,
+                    Bulletin.aasm.states.map { |state| [t("aasm.states.#{state.name}"), state.name]},
+                    { include_blank: true },
+                    class: "form-control select required"
+                small.form-text.text-muted = t(:by_state)
+
+            .col-2
+              = f.submit t(:search), class: "btn btn-primary me-2", data: { disable_with: "Искать" }
+              = link_to t(:reset), profile_path, class: "btn btn-outline-primary"
+
         .row.mt-2
           table.table.table-borderless
             thead
@@ -38,3 +57,5 @@
                         archive_bulletin_path(bulletin),
                         data: { turbo_method: :patch, turbo_confirm: t(:confirm_archive) },
                         class: 'text-danger'
+          .mt-3
+            = paginate @bulletins, theme: "bootstrap-5"
