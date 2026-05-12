@@ -502,6 +502,7 @@ DEPENDENCIES
   jsbundling-rails
   kamal
   kaminari
+  mini_magick
   minitest (~> 5.20)
   omniauth-github
   omniauth-rails_csrf_protection
@@ -513,7 +514,6 @@ DEPENDENCIES
   rails-i18n
   ransack
   rubocop-rails-omakase
-  ruby-vips
   selenium-webdriver
   sentry-rails
   sentry-ruby

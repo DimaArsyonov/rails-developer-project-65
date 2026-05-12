@@ -65,7 +65,7 @@ gem "html2slim", git: "https://github.com/slim-template/html2slim.git"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
-gem "ruby-vips"
+gem "mini_magick"
 
 # Authorization with Pundit
 gem "pundit"
