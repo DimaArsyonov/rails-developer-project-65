@@ -1,12 +1,12 @@
 class Web::BulletinsController < Web::ApplicationController
   before_action :require_login, only: %i[new create edit]
   before_action :set_categories, only: %i[new edit create update]
-  before_action :set_bulletin, only: %i[ show edit update to_moderate ]
+  before_action :set_bulletin, only: %i[ show edit update to_moderate archive]
 
   # GET /bulletins or /bulletins.json
   def index
-    @bulletins = Bulletin.order(created_at: :desc)
-    authorize @bulletins
+    @q = Bulletin.ransack(params[:q])
+    @bulletins = @q.result.published.order(created_at: :desc)
   end
 
   # GET /bulletins/1 or /bulletins/1.json
@@ -60,6 +60,14 @@ class Web::BulletinsController < Web::ApplicationController
       redirect_back fallback_location: root_path, notice: t(:bulletin_sent_to_moderation)
     else
       redirect_back fallback_location: root_path, alert: t(:bulletin_not_sent_to_moderation)
+    end
+  end
+
+  def archive
+    if @bulletin.archive!
+      redirect_back fallback_location: root_path, notice: t(:bulletin_archived)
+    else
+      redirect_back fallback_location: root_path, alert: t(:bulletin_not_archived)
     end
   end
 
