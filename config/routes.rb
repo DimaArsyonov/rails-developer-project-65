@@ -9,16 +9,19 @@ Rails.application.routes.draw do
     resources :bulletins do
       member do
         patch :to_moderate
-        patch :publish
-        patch :reject
-        patch :archive
       end
     end
     get "/admin", to: "admin#index", as: :admin
     get "/profile", to: "profiles#show", as: :profile
     namespace :admin do
       resources :categories
-      resources :bulletins
+      resources :bulletins do
+        member do
+          patch :publish
+          patch :reject
+          patch :archive
+        end
+      end
     end
   end
 

@@ -1,5 +1,5 @@
 class Web::ApplicationController < ApplicationController
-  include Pundit
+  include Pundit::Authorization
 
   helper_method :current_user
   helper_method :require_login
