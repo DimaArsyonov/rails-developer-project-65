@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :bulletins do
       member do
         patch :to_moderate
+        patch :archive
       end
     end
     get "/admin", to: "admin#index", as: :admin
