@@ -22,13 +22,13 @@
 
                 - if bulletin.may_publish?
                   = link_to t(:publish),
-                    publish_bulletin_path(bulletin),
+                    publish_admin_bulletin_path(bulletin),
                     data: { turbo_method: :patch },
                     class: 'me-2'
 
                 - if bulletin.may_reject?
                   = link_to t(:reject),
-                    reject_bulletin_path(bulletin),
+                    reject_admin_bulletin_path(bulletin),
                     data: { turbo_method: :patch },
                     class: 'me-2'
 
