@@ -1,7 +1,7 @@
 class Web::BulletinsController < Web::ApplicationController
   before_action :require_login, only: %i[new create edit]
   before_action :set_categories, only: %i[new edit create update]
-  before_action :set_bulletin, only: %i[ show edit update to_moderate publish reject archive ]
+  before_action :set_bulletin, only: %i[ show edit update to_moderate ]
 
   # GET /bulletins or /bulletins.json
   def index
@@ -55,35 +55,11 @@ class Web::BulletinsController < Web::ApplicationController
     end
   end
 
-  def publish
-    if @bulletin.publish!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_published)
-    else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_published)
-    end
-  end
-
   def to_moderate
     if @bulletin.to_moderate!
       redirect_back fallback_location: root_path, notice: t(:bulletin_sent_to_moderation)
     else
       redirect_back fallback_location: root_path, alert: t(:bulletin_not_sent_to_moderation)
-    end
-  end
-
-  def reject
-    if @bulletin.reject!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_rejected)
-    else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_rejected)
-    end
-  end
-
-  def archive
-    if @bulletin.archive!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_archived)
-    else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_archived)
     end
   end
 
