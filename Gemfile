@@ -1,114 +1,114 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0"
+gem 'rails', '~> 7.2.0'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft"
+gem 'propshaft'
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+gem 'puma', '>= 5.0'
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem "jsbundling-rails"
+gem 'jsbundling-rails'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem 'turbo-rails'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem 'stimulus-rails'
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
+gem 'cssbundling-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+gem 'jbuilder'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
 
 # aasm for state machine
-gem "aasm"
+gem 'aasm'
 
 # Use Active Storage validations
-gem "active_storage_validations"
+gem 'active_storage_validations'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false
+gem 'kamal', require: false
 
 # Authentication with GitHub
-gem "omniauth-github"
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 
 # Pagination with Kaminari
-gem "kaminari"
-gem "bootstrap5-kaminari-views"
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 # Search and filtering with Ransack
-gem "ransack"
+gem 'ransack'
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem "thruster", require: false
+gem 'thruster', require: false
 
 # Error tracking and performance monitoring [https://sentry.io/welcome/]
-gem "sentry-rails"
-gem "sentry-ruby"
+gem 'sentry-rails'
+gem 'sentry-ruby'
 
 # Easy form builder for Rails
-gem "simple_form"
+gem 'simple_form'
 
 # Use Slim for templates
-gem "slim-rails"
+gem 'slim-rails'
 
 # HTML to Slim converter
-gem "html2slim", git: "https://github.com/slim-template/html2slim.git"
+gem 'html2slim', git: 'https://github.com/slim-template/html2slim.git'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
-gem "mini_magick"
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 
 # Authorization with Pundit
-gem "pundit"
+gem 'pundit'
 
 # Internationalization and localization [https://guides.rubyonrails.org/i18n.html]
-gem "rails-i18n"
+gem 'rails-i18n'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
 
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
-  gem "bundler-audit", require: false
+  gem 'bundler-audit', require: false
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", "~> 8.0.4", require: false
+  gem 'brakeman', '~> 8.0.4', require: false
 
-  gem "dotenv-rails"
+  gem 'dotenv-rails'
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  gem 'rubocop-rails-omakase', require: false
 
-  gem "sqlite3"
+  gem 'sqlite3'
 
   # Slim linter
-  gem "slim_lint", require: false
+  gem 'slim_lint', require: false
 
   # Fake data generator
-  gem "faker"
+  gem 'faker'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  gem 'web-console'
 end
 
 group :production do
-    gem "pg"
+    gem 'pg'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "minitest", "~> 5.20"
-  gem "selenium-webdriver"
+  gem 'capybara'
+  gem 'minitest', '~> 5.20'
+  gem 'selenium-webdriver'
 end

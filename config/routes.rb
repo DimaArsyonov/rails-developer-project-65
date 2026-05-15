@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   scope module: :web do
-    root "bulletins#index"
-    post "auth/:provider", to: "auth#request", as: :auth_request
-    get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
-    delete "/logout", to: "auth#logout", as: :logout
+    root 'bulletins#index'
+    post 'auth/:provider', to: 'auth#request', as: :auth_request
+    get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+    delete '/logout', to: 'auth#logout', as: :logout
     resources :bulletins do
       member do
         patch :to_moderate
         patch :archive
       end
     end
-    get "/admin", to: "admin#index", as: :admin
-    get "/profile", to: "profiles#show", as: :profile
+    get '/admin', to: 'admin#index', as: :admin
+    get '/profile', to: 'profiles#show', as: :profile
     namespace :admin do
       resources :categories
       resources :bulletins do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
