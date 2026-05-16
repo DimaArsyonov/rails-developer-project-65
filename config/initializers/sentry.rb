@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Sentry.init do |config|
   config.dsn = 'https://898c4740e5931a7a05c02f8d2e4d5374@o4510127544991744.ingest.us.sentry.io/4510127549972480'
   # get breadcrumbs from logs

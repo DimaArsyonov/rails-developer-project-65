@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNullConstraintToCategories < ActiveRecord::Migration[7.2]
   def change
     change_column_null :categories, :name, false

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class Web::Admin::BulletinsController < Web::AdminController
   before_action :require_admin
-  before_action :set_bulletin, only: %i[ publish reject archive ]
-
+  before_action :set_bulletin, only: %i[publish reject archive]
 
   # GET /bulletins
   def index
@@ -35,6 +36,7 @@ class Web::Admin::BulletinsController < Web::AdminController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_bulletin
       @bulletin = Bulletin.find(params[:id])

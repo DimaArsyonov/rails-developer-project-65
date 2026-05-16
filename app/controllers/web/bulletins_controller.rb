@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Web::BulletinsController < Web::ApplicationController
   before_action :require_login, only: %i[new create edit]
   before_action :set_categories, only: %i[new edit create update]
-  before_action :set_bulletin, only: %i[ show edit update to_moderate archive]
+  before_action :set_bulletin, only: %i[show edit update to_moderate archive]
 
   # GET /bulletins or /bulletins.json
   def index
@@ -10,8 +12,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   # GET /bulletins/1 or /bulletins/1.json
-  def show
-  end
+  def show; end
 
   # GET /bulletins/new
   def new
@@ -21,8 +22,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   # GET /bulletins/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /bulletins or /bulletins.json
   def create
@@ -36,8 +36,8 @@ class Web::BulletinsController < Web::ApplicationController
         format.html { redirect_to @bulletin, notice: t(:bulletin_created) }
         format.json { render :show, status: :created, location: @bulletin }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bulletin.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @bulletin.errors, status: :unprocessable_content }
       end
     end
   end
@@ -49,8 +49,8 @@ class Web::BulletinsController < Web::ApplicationController
         format.html { redirect_to profile_path, notice: t(:bulletin_updated), status: :see_other }
         format.json { render :show, status: :ok, location: @bulletin }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bulletin.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @bulletin.errors, status: :unprocessable_content }
       end
     end
   end
@@ -72,6 +72,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_bulletin
       @bulletin = Bulletin.find(params[:id])

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 100.times do
   bulletin = Bulletin.create!(
     title: Faker::Lorem.sentence,

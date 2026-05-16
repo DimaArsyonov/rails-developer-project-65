@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::AdminController < Web::ApplicationController
   before_action :require_admin
 
@@ -7,9 +9,9 @@ class Web::AdminController < Web::ApplicationController
   end
 
   private
+
     def require_admin
-      unless current_user&.admin?
+      return if current_user&.admin?
         redirect_to root_path, alert: t(:must_be_admin)
-      end
     end
 end

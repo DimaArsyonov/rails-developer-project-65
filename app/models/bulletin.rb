@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bulletin < ApplicationRecord
   include AASM
 
@@ -12,11 +14,11 @@ class Bulletin < ApplicationRecord
                     content_type: %i[png jpg jpeg],
                     size: { less_than_or_equal_to: 5.megabytes }
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[title description image category created_at updated_at state category_id user_id]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[category]
   end
 

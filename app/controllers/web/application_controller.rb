@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::ApplicationController < ApplicationController
   include Pundit::Authorization
 
@@ -13,9 +15,8 @@ class Web::ApplicationController < ApplicationController
   end
 
   def require_login
-    unless current_user
+    return if current_user
       redirect_to root_path, alert: t(:must_be_logged_in)
-    end
   end
 
   def user_not_authorized

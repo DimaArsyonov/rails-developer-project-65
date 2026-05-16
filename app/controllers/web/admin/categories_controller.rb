@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Web::Admin::CategoriesController < Web::AdminController
   before_action :require_admin
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[show edit update destroy]
 
   # GET /categories
   def index
@@ -11,11 +13,9 @@ class Web::Admin::CategoriesController < Web::AdminController
     @category = Category.new
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @category = Category.new(category_params)
@@ -23,7 +23,7 @@ class Web::Admin::CategoriesController < Web::AdminController
     if @category.save
       redirect_to admin_categories_path, notice: t(:category_created)
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -31,7 +31,7 @@ class Web::Admin::CategoriesController < Web::AdminController
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t(:category_updated)
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
