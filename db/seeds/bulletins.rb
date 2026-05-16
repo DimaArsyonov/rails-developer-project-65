@@ -4,8 +4,8 @@
   bulletin = Bulletin.create!(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph_by_chars(number: 256),
-    user: User.first,
-    category: Category.first
+    user: User.first!,
+    category: Category.first!
   )
 
   bulletin.image.attach(
