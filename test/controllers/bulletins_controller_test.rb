@@ -7,7 +7,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin = bulletins(:one)
 
     @bulletin.image.attach(
-      io: File.open(Rails.root.join('test/fixtures/files/bulletin_test.jpg')),
+      io: Rails.root.join('test/fixtures/files/bulletin_test.jpg').open,
       filename: 'bulletin_test.jpg',
       content_type: 'image/jpeg'
     )
@@ -46,7 +46,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update bulletin' do
     file = fixture_file_upload(Rails.root.join('test/fixtures/files/bulletin_test.jpg'), 'image/jpeg')
-    patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title,  image: file } }
+    patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title, image: file } }
     assert_redirected_to profile_url
   end
 end

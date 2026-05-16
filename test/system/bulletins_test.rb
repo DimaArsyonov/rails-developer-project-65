@@ -9,7 +9,7 @@ class BulletinsTest < ApplicationSystemTestCase
     @category = categories(:one)
 
     @bulletin.image.attach(
-      io: File.open(Rails.root.join('test/fixtures/files/bulletin_test.jpg')),
+      io: Rails.root.join('test/fixtures/files/bulletin_test.jpg').open,
       filename: 'bulletin_test.jpg',
       content_type: 'image/jpeg'
     )

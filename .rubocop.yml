@@ -48,3 +48,45 @@ Style/EmptyMethod:
 
 Lint/UnusedMethodArgument:
   Enabled: true
+
+Layout/IndentationConsistency:
+  Enabled: true
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  Enabled: true
+
+Layout/EmptyComment:
+  Enabled: true
+
+Rails/ActionOrder:
+  Enabled: true
+
+Rails/RootPathnameMethods:
+  Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: true
+
+Style/RedundantConstantBase:
+  Enabled: true
+
+Style/FetchEnvVar:
+  Enabled: true
+
+Style/RedundantInterpolation:
+  Enabled: true
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+
+Style/SymbolArray:
+  EnforcedStyle: percent

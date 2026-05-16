@@ -9,14 +9,13 @@
   )
 
   bulletin.image.attach(
-    io: File.open(Rails.root.join('db/seeds/files/bulletin_test.jpg')),
+    io: Rails.root.join('db/seeds/files/bulletin_test.jpg').open,
     filename: 'bulletin_test.jpg',
     content_type: 'image/jpeg'
   )
 
   case %i[draft under_moderation published rejected archived].sample
   when :draft
-    #
   when :under_moderation
     bulletin.to_moderate! if bulletin.may_to_moderate?
   when :published

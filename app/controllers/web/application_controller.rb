@@ -16,7 +16,8 @@ class Web::ApplicationController < ApplicationController
 
   def require_login
     return if current_user
-      redirect_to root_path, alert: t(:must_be_logged_in)
+
+    redirect_to root_path, alert: t(:must_be_logged_in)
   end
 
   def user_not_authorized

@@ -9,11 +9,10 @@ class Web::Admin::CategoriesController < Web::AdminController
     @categories = Category.order(id: :asc).page(params[:page]).per(10)
   end
 
+  def show; end
   def new
     @category = Category.new
   end
-
-  def show; end
 
   def edit; end
 
