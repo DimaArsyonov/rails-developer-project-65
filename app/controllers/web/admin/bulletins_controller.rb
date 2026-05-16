@@ -37,18 +37,16 @@ class Web::Admin::BulletinsController < Web::AdminController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bulletin
-      @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-    end
+  def set_bulletin
+    @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
+  end
 
-    def set_categories
-      @categories = Category.all
-    end
+  def set_categories
+    @categories = Category.all
+  end
 
-    # Only allow a list of trusted parameters through.
-    def bulletin_params
-      params.require(:bulletin).permit(:title, :description, :image, :category_id)
-    end
+  def bulletin_params
+    params.require(:bulletin).permit(:title, :description, :image, :category_id)
+  end
 end

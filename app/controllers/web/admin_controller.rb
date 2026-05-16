@@ -10,9 +10,9 @@ class Web::AdminController < Web::ApplicationController
 
   private
 
-    def require_admin
-      return if current_user&.admin?
+  def require_admin
+    return if current_user&.admin?
 
-      redirect_to root_path, alert: t(:must_be_admin)
-    end
+    redirect_to root_path, alert: t(:must_be_admin)
+  end
 end

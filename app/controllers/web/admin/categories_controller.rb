@@ -10,6 +10,7 @@ class Web::Admin::CategoriesController < Web::AdminController
   end
 
   def show; end
+
   def new
     @category = Category.new
   end

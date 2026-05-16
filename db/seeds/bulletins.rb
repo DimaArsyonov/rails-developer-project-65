@@ -15,7 +15,6 @@
   )
 
   case %i[draft under_moderation published rejected archived].sample
-  when :draft
   when :under_moderation
     bulletin.to_moderate! if bulletin.may_to_moderate?
   when :published
