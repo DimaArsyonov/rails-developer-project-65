@@ -16,6 +16,9 @@ Style/FrozenStringLiteralComment:
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
 Layout/EmptyLines:
   Enabled: true
 
