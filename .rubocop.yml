@@ -31,9 +31,6 @@ Layout/SpaceInsidePercentLiteralDelimiters:
 Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
 
-Style/SymbolArray:
-  EnforcedStyle: percent
-
 Bundler/OrderedGems:
   Enabled: true
 
