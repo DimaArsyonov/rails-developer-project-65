@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-100.times do |i|
+100.times do
   bulletin = Bulletin.create!(
     title: Faker::Lorem.sentence(word_count: 2)[0, 30],
     description: Faker::Lorem.paragraph_by_chars(number: 256),
