@@ -26,4 +26,8 @@
   when :archived
     bulletin.archive! if bulletin.may_archive?
   end
+
+  puts "Bulletin created successfully"
+rescue StandardError => e
+  puts "FAILED: #{e.class} - #{e.message}"
 end
