@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 100.times do
-  bulletin = Bulletin.create!(
+  bulletin = Bulletin.new(
     title: Faker::Lorem.sentence(word_count: 2)[0, 30],
     description: Faker::Lorem.paragraph_by_chars(number: 256),
     user: User.first!,
@@ -13,6 +13,8 @@
     filename: 'bulletin_test.jpg',
     content_type: 'image/jpeg'
   )
+
+  bulletin.save!
 
   case %i[draft under_moderation published rejected archived].sample
   when :under_moderation
@@ -26,8 +28,4 @@
   when :archived
     bulletin.archive! if bulletin.may_archive?
   end
-
-  puts 'Bulletin created successfully'
-rescue StandardError => e
-  puts "FAILED: #{e.class} - #{e.message}"
 end
