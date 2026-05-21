@@ -28,9 +28,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     file = fixture_file_upload(Rails.root.join('test/fixtures/files/bulletin_test.jpg'), 'image/jpeg')
 
     assert_difference('Bulletin.count') do
-      post bulletins_url,
-           params: { bulletin: { description: @bulletin.description, title: @bulletin.title, category_id: categories(:one).id,
-                                 image: file } }
+      post bulletins_url, params: { bulletin: { description: @bulletin.description, title: @bulletin.title, category_id: categories(:one).id, image: file } }
     end
 
     assert_redirected_to bulletin_url(Bulletin.last)
@@ -48,8 +46,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update bulletin' do
     file = fixture_file_upload(Rails.root.join('test/fixtures/files/bulletin_test.jpg'), 'image/jpeg')
-    patch bulletin_url(@bulletin),
-          params: { bulletin: { description: @bulletin.description, title: @bulletin.title, image: file } }
+    patch bulletin_url(@bulletin), params: { bulletin: { description: @bulletin.description, title: @bulletin.title, image: file } }
     assert_redirected_to profile_url
   end
 end

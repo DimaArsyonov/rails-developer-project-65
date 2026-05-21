@@ -35,8 +35,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[7.0]
         t.datetime :created_at, null: false
       end
 
-      t.index %i[record_type record_id name blob_id], name: :index_active_storage_attachments_uniqueness,
-                                                      unique: true
+      t.index [ :record_type, :record_id, :name, :blob_id ], name: :index_active_storage_attachments_uniqueness, unique: true
       t.foreign_key :active_storage_blobs, column: :blob_id
     end
 
@@ -44,18 +43,18 @@ class CreateActiveStorageTables < ActiveRecord::Migration[7.0]
       t.belongs_to :blob, null: false, index: false, type: foreign_key_type
       t.string :variation_digest, null: false
 
-      t.index %i[blob_id variation_digest], name: :index_active_storage_variant_records_uniqueness, unique: true
+      t.index [ :blob_id, :variation_digest ], name: :index_active_storage_variant_records_uniqueness, unique: true
       t.foreign_key :active_storage_blobs, column: :blob_id
     end
   end
 
   private
 
-  def primary_and_foreign_key_types
-    config = Rails.configuration.generators
-    setting = config.options[config.orm][:primary_key_type]
-    primary_key_type = setting || :primary_key
-    foreign_key_type = setting || :bigint
-    [ primary_key_type, foreign_key_type ]
-  end
+    def primary_and_foreign_key_types
+      config = Rails.configuration.generators
+      setting = config.options[config.orm][:primary_key_type]
+      primary_key_type = setting || :primary_key
+      foreign_key_type = setting || :bigint
+      [ primary_key_type, foreign_key_type ]
+    end
 end

@@ -3,7 +3,7 @@
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
-plugins:
+require:
   - rubocop-rails
 
 AllCops:
