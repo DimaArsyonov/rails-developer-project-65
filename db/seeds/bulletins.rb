@@ -1,9 +1,30 @@
 # frozen_string_literal: true
 
+require 'tempfile'
+
+def random_bulletin_state(bulletin)
+  return unless bulletin.may_to_moderate?
+
+  bulletin.to_moderate!
+  apply_random_action(bulletin)
+end
+
+def apply_random_action(bulletin)
+  case rand(3)
+  when 0 then bulletin.publish! if bulletin.may_publish?
+  when 1 then bulletin.reject! if bulletin.may_reject?
+  when 2 then bulletin.archive! if bulletin.may_archive?
+  end
+end
+
+source_path = Rails.root.join('db/seeds/files/bulletin_test.jpg')
+file_content = File.read(source_path)
+
 100.times do
-  file = Rails.root.join('db/seeds/files/bulletin_test.jpg').open
+  tempfile = Tempfile.new(['bulletin', '.jpg'], binmode: true)
+  tempfile.write(file_content).rewind
   uploaded = ActionDispatch::Http::UploadedFile.new(
-    tempfile: file,
+    tempfile: tempfile,
     filename: 'bulletin_test.jpg',
     content_type: 'image/jpeg'
   )
@@ -14,17 +35,5 @@
     category: Category.first!,
     image: uploaded
   )
-
-  case %i[draft under_moderation published rejected archived].sample
-  when :under_moderation
-    bulletin.to_moderate! if bulletin.may_to_moderate?
-  when :published
-    bulletin.to_moderate! if bulletin.may_to_moderate?
-    bulletin.publish! if bulletin.may_publish?
-  when :rejected
-    bulletin.to_moderate! if bulletin.may_to_moderate?
-    bulletin.reject! if bulletin.may_reject?
-  when :archived
-    bulletin.archive! if bulletin.may_archive?
-  end
+  random_bulletin_state(bulletin)
 end
