@@ -78,3 +78,4 @@ ru:
       last: "»"
       previous: "‹"
       next: "›"
+      truncate: "..."

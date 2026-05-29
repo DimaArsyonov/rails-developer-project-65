@@ -1,88 +1,53 @@
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
-require:
-  - rubocop-rails
+---
 
 AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - "bin/**"
+    - "db/schema.rb"
+    - "db/migrate/**"
+    - "vendor/**/*"
+    - "node_modules/**/*"
   NewCops: enable
+  TargetRailsVersion: 8
+  TargetRubyVersion: 3.4
 
-Style/FrozenStringLiteralComment:
-  Enabled: true
-
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-
-Layout/SpaceInsideArrayLiteralBrackets:
+Layout/LineLength:
   Enabled: false
 
-Layout/EmptyLines:
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails:
   Enabled: true
 
-Layout/IndentationWidth:
-  Width: 2
+plugins:
+  - rubocop-performance
+  - rubocop-rails
 
-Layout/SpaceInsidePercentLiteralDelimiters:
-  Enabled: true
+Style/AsciiComments:
+  Enabled: false
 
-Layout/EmptyLinesAroundAccessModifier:
-  Enabled: true
+Style/ClassAndModuleChildren:
+  Enabled: false
 
-Bundler/OrderedGems:
-  Enabled: true
+Style/Documentation:
+  Enabled: false
 
-Rails/HttpStatusNameConsistency:
-  Enabled: true
-
-Style/GuardClause:
-  Enabled: true
-
-Style/EmptyMethod:
-  Enabled: true
-
-Lint/UnusedMethodArgument:
-  Enabled: true
-
-Layout/IndentationConsistency:
-  Enabled: true
-
-Layout/EmptyLineAfterGuardClause:
-  Enabled: true
-
-Layout/MultilineMethodCallIndentation:
-  Enabled: true
-
-Layout/HashAlignment:
-  Enabled: true
-
-Layout/ExtraSpacing:
-  Enabled: true
-
-Layout/EmptyComment:
-  Enabled: true
-
-Rails/ActionOrder:
-  Enabled: true
-
-Rails/RootPathnameMethods:
-  Enabled: true
-
-Style/GlobalStdStream:
-  Enabled: true
-
-Style/RedundantConstantBase:
-  Enabled: true
-
-Style/FetchEnvVar:
-  Enabled: true
-
-Style/RedundantInterpolation:
-  Enabled: true
-
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-
-Style/SymbolArray:
-  EnforcedStyle: percent
+Style/IfUnlessModifier:
+  Enabled: false

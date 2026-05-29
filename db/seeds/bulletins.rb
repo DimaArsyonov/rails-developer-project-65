@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+return if Bulletin.exists?
+
 require 'tempfile'
 
 def random_bulletin_state(bulletin)
