@@ -37,7 +37,6 @@ Rails:
   Enabled: true
 
 plugins:
-  - rubocop-performance
   - rubocop-rails
 
 Style/AsciiComments:
