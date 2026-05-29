@@ -22,7 +22,8 @@ file_content = File.read(source_path)
 
 100.times do
   tempfile = Tempfile.new(['bulletin', '.jpg'], binmode: true)
-  tempfile.write(file_content).rewind
+  tempfile.write(file_content)
+  tempfile.rewind
   uploaded = ActionDispatch::Http::UploadedFile.new(
     tempfile: tempfile,
     filename: 'bulletin_test.jpg',
