@@ -27,5 +27,6 @@ module RailsDeveloperProject65
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.available_locales = %i[en ru]
     config.i18n.default_locale = :ru
+    config.active_storage.variant_processor = :mini_magick
   end
 end

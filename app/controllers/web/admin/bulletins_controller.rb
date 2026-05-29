@@ -13,25 +13,25 @@ class Web::Admin::BulletinsController < Web::AdminController
 
   def publish
     if @bulletin.publish!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_published)
+      redirect_back_or_to root_path, notice: t(:bulletin_published)
     else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_published)
+      redirect_back_or_to root_path, alert: t(:bulletin_not_published)
     end
   end
 
   def reject
     if @bulletin.reject!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_rejected)
+      redirect_back_or_to root_path, notice: t(:bulletin_rejected)
     else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_rejected)
+      redirect_back_or_to root_path, alert: t(:bulletin_not_rejected)
     end
   end
 
   def archive
     if @bulletin.archive!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_archived)
+      redirect_back_or_to root_path, notice: t(:bulletin_archived)
     else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_archived)
+      redirect_back_or_to root_path, alert: t(:bulletin_not_archived)
     end
   end
 

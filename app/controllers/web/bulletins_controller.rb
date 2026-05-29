@@ -57,17 +57,17 @@ class Web::BulletinsController < Web::ApplicationController
 
   def to_moderate
     if @bulletin.to_moderate!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_sent_to_moderation)
+      redirect_back_or_to root_path, notice: t(:bulletin_sent_to_moderation)
     else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_sent_to_moderation)
+      redirect_back_or_to root_path, alert: t(:bulletin_not_sent_to_moderation)
     end
   end
 
   def archive
     if @bulletin.archive!
-      redirect_back fallback_location: root_path, notice: t(:bulletin_archived)
+      redirect_back_or_to root_path, notice: t(:bulletin_archived)
     else
-      redirect_back fallback_location: root_path, alert: t(:bulletin_not_archived)
+      redirect_back_or_to root_path, alert: t(:bulletin_not_archived)
     end
   end
 
