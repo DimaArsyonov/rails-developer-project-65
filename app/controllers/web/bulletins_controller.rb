@@ -33,7 +33,7 @@ class Web::BulletinsController < Web::ApplicationController
 
     respond_to do |format|
       if @bulletin.save
-        format.html { redirect_to @bulletin, notice: t(:bulletin_created) }
+        format.html { redirect_to profile_path, notice: t(:bulletin_created) }
         format.json { render :show, status: :created, location: @bulletin }
       else
         format.html { render :new, status: :unprocessable_content }
