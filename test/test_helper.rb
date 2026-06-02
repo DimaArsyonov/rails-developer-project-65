@@ -16,19 +16,9 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     class ActionDispatch::IntegrationTest
-      def sign_in(user, _options = {})
-        auth_hash = {
-          provider: 'github',
-          uid: '12345',
-          info: {
-            email: user.email,
-            name: user.name
-          }
-        }
-
-        OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
-
-        get callback_auth_url('github')
+      def sign_in(user)
+        post auth_request_path('github', email: user.email)
+        follow_redirect!
       end
 
       def signed_in?

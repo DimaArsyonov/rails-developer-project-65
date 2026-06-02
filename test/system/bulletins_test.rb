@@ -4,9 +4,11 @@ require 'application_system_test_case'
 
 class BulletinsTest < ApplicationSystemTestCase
   setup do
+    @user = users(:one)
     @bulletin = bulletins(:one)
-
     @category = categories(:one)
+
+    @bulletin.update!(user: @user)
 
     @bulletin.image.attach(
       io: Rails.root.join('test/fixtures/files/bulletin_test.jpg').open,
@@ -16,13 +18,11 @@ class BulletinsTest < ApplicationSystemTestCase
 
     @bulletin.save!
 
-    @user = users(:one)
-
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
       provider: 'github',
-      uid: @user.id,
+      uid: '12345',
       info: {
         email: @user.email,
         name: @user.name
@@ -52,11 +52,6 @@ class BulletinsTest < ApplicationSystemTestCase
 
   test 'should update Bulletin' do
     visit profile_url
-
-    puts "USER ID: #{@user.id}"
-    puts "BULLETIN USER ID: #{@bulletin.user_id}"
-    puts 'PAGE BODY:'
-    puts page.text
 
     click_on I18n.t(:edit)
 
