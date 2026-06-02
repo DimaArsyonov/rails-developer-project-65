@@ -53,7 +53,11 @@ class BulletinsTest < ApplicationSystemTestCase
   test 'should update Bulletin' do
     visit profile_url
 
-    puts page.html
+    puts "USER ID: #{@user.id}"
+    puts "BULLETIN USER ID: #{@bulletin.user_id}"
+    puts 'PAGE BODY:'
+    puts page.text
+
     click_on I18n.t(:edit)
 
     fill_in I18n.t('simple_form.labels.bulletin.description'), with: @bulletin.description
