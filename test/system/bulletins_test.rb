@@ -55,9 +55,6 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test 'should update Bulletin' do
-    visit root_path
-    click_on I18n.t(:sign_in)
-
     visit profile_url
 
     click_on I18n.t(:edit)
