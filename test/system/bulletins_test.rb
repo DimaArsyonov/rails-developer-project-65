@@ -8,8 +8,6 @@ class BulletinsTest < ApplicationSystemTestCase
     @bulletin = bulletins(:one)
     @category = categories(:one)
 
-    @bulletin.update!(user: @user)
-
     @bulletin.image.attach(
       io: Rails.root.join('test/fixtures/files/bulletin_test.jpg').open,
       filename: 'bulletin_test.jpg',
@@ -17,6 +15,8 @@ class BulletinsTest < ApplicationSystemTestCase
     )
 
     @bulletin.save!
+
+    @bulletin.update!(user: @user)
 
     OmniAuth.config.test_mode = true
 
