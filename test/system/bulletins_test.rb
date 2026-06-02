@@ -52,6 +52,8 @@ class BulletinsTest < ApplicationSystemTestCase
 
   test 'should update Bulletin' do
     visit profile_url
+
+    puts page.html
     click_on I18n.t(:edit)
 
     fill_in I18n.t('simple_form.labels.bulletin.description'), with: @bulletin.description
