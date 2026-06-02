@@ -13,8 +13,7 @@ class BulletinsTest < ApplicationSystemTestCase
       provider: 'github',
       uid: '12345',
       info: {
-        email: @user.email,
-        name: @user.name
+        email: @user.email
       }
     )
 
