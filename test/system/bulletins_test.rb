@@ -7,11 +7,24 @@ class BulletinsTest < ApplicationSystemTestCase
     @user = users(:one)
     @category = categories(:one)
 
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+      provider: 'github',
+      uid: '12345',
+      info: {
+        email: @user.email,
+        name: @user.name
+      }
+    )
+
+    visit callback_auth_url(provider: :github)
+
     @bulletin = Bulletin.new(
       title: 'Test title',
       description: 'Test description',
       category: @category,
-      user: @user
+      user: current_user
     )
 
     @bulletin.image.attach(
@@ -21,8 +34,6 @@ class BulletinsTest < ApplicationSystemTestCase
     )
 
     @bulletin.save!
-
-    page.set_rack_session(user_id: @user.id)
   end
 
   test 'visiting the index' do
