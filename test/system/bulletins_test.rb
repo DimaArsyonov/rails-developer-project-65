@@ -17,7 +17,7 @@ class BulletinsTest < ApplicationSystemTestCase
       }
     )
 
-    visit callback_auth_url(provider: :github)
+    visit callback_auth_url(provider: :github, email: @user.email)
 
     @bulletin = Bulletin.new(
       title: 'Test title',
