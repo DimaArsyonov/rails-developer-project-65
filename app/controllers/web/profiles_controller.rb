@@ -5,9 +5,9 @@ class Web::ProfilesController < Web::ApplicationController
 
   def show
     @q = current_user.bulletins.ransack(params[:q])
-    Rails.logger.debug params[:q].inspect
-    Rails.logger.debug @q.result.to_sql
-    Rails.logger.debug @q.result.count
+    puts params[:q].inspect
+    puts @q.result.to_sql
+    puts @q.result.count
     @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
   end
 end
