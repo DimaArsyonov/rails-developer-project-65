@@ -24,7 +24,7 @@ class BulletinsTest < ApplicationSystemTestCase
       title: 'Test title',
       description: 'Test description',
       category: @category,
-      user: current_user
+      user: @user
     )
 
     @bulletin.image.attach(
@@ -55,6 +55,9 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test 'should update Bulletin' do
+    visit root_path
+    click_on I18n.t(:sign_in)
+
     visit profile_url
 
     click_on I18n.t(:edit)
