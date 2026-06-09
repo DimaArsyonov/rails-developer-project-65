@@ -17,14 +17,10 @@ class BulletinsTest < ApplicationSystemTestCase
       }
     )
 
-    visit callback_auth_url(provider: :github, email: @user.email)
+    visit root_path
+    click_on I18n.t(:sign_in)
 
-    @bulletin = Bulletin.new(
-      title: 'Test title',
-      description: 'Test description',
-      category: @category,
-      user: @user
-    )
+    @bulletin = bulletins(:one)
 
     @bulletin.image.attach(
       io: Rails.root.join('test/fixtures/files/bulletin_test.jpg').open,
