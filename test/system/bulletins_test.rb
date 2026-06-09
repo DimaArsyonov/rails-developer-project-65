@@ -50,7 +50,15 @@ class BulletinsTest < ApplicationSystemTestCase
   end
 
   test 'should update Bulletin' do
-    visit profile_url
+    visit root_path
+
+    click_on I18n.t(:add)
+
+    fill_in I18n.t('simple_form.labels.bulletin.description'), with: 'Test description'
+    fill_in I18n.t('simple_form.labels.bulletin.title'), with: 'Test title'
+    attach_file I18n.t('simple_form.labels.bulletin.image'), Rails.root.join('test/fixtures/files/bulletin_test.jpg')
+    find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
+    click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.bulletin'))
 
     click_on I18n.t(:edit)
 
