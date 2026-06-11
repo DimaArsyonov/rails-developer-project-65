@@ -1,8 +1,11 @@
+setup: install env-prepare db-setup
+install:
+	bundle install
 env-prepare:
-	cp -n .env.example .env || true
+	test -f .env || cp .env.example .env
 db-setup:
 	bundle exec rails db:create db:migrate db:seed
 start:
-	bundle exec rails server
+	bundle exec rails s
 test:
 	bundle exec rspec

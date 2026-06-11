@@ -61,9 +61,6 @@ gem 'simple_form'
 # Use Slim for templates
 gem 'slim-rails'
 
-# HTML to Slim converter
-gem 'html2slim', git: 'https://github.com/slim-template/html2slim.git'
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
@@ -101,6 +98,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
+
+  # HTML to Slim converter
+  gem 'html2slim', git: 'https://github.com/slim-template/html2slim.git'
 end
 
 group :production do

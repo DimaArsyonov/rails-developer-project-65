@@ -31,7 +31,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
       post bulletins_url, params: { bulletin: { description: @bulletin.description, title: @bulletin.title, category_id: categories(:one).id, image: file } }
     end
 
-    assert_redirected_to bulletin_url(Bulletin.last)
+    assert_redirected_to profile_url
   end
 
   test 'should show bulletin' do

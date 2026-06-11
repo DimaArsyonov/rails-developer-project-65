@@ -21,7 +21,7 @@ class BulletinPolicy
   end
 
   def show?
-    true
+    bulletin.published? || user.present?
   end
 
   def edit?
