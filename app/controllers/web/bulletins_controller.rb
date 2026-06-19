@@ -38,10 +38,8 @@ class Web::BulletinsController < Web::ApplicationController
 
     if @bulletin.save
       redirect_to profile_path, notice: t(:bulletin_created)
-      render :show, status: :created, location: @bulletin
     else
       render :new, status: :unprocessable_content
-      render json: @bulletin.errors, status: :unprocessable_content
     end
   end
 
@@ -53,10 +51,8 @@ class Web::BulletinsController < Web::ApplicationController
 
     if @bulletin.update(bulletin_params)
       redirect_to profile_path, notice: t(:bulletin_updated), status: :see_other
-      render :show, status: :ok, location: @bulletin
     else
       render :edit, status: :unprocessable_content
-      render json: @bulletin.errors, status: :unprocessable_content
     end
   end
 
