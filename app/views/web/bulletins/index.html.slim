@@ -15,7 +15,7 @@ main.mt-4.mb-5.pb-5
             .col-4
               .form-group.mb-3
                 = f.select :category_id_eq,
-                    Category.all.map { |c| [c.name, c.id] },
+                    @categories.map { |c| [c.name, c.id] },
                     { include_blank: true },
                     class: "form-control select required"
                 small.form-text.text-muted = t(:choose_category)
@@ -34,3 +34,5 @@ main.mt-4.mb-5.pb-5
                   h5.card-title = bulletin.title
               h6.card-subtitle.mb-2.text-muted
                 = t("datetime.distance_in_words.ago", time: time_ago_in_words(bulletin.created_at))
+      .mt-3
+        = paginate @bulletins, theme: "bootstrap-5"

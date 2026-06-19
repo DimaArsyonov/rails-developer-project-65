@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'bulletins#index'
     post 'auth/:provider', to: 'auth#request', as: :auth_request
-    get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth, via: %i[get post]
+    match 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth, via: %i[get post]
     delete '/logout', to: 'auth#logout', as: :logout
     resources :bulletins do
       member do
@@ -13,9 +13,9 @@ Rails.application.routes.draw do
         patch :archive
       end
     end
-    get '/admin', to: 'admin#index', as: :admin
-    get '/profile', to: 'profiles#show', as: :profile
+    resource :profile, only: %i[show]
     namespace :admin do
+      root 'admin#index'
       resources :categories
       resources :bulletins do
         member do

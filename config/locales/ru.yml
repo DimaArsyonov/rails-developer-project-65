@@ -19,6 +19,7 @@ ru:
   date_created: "Дата создания"
   actions: "Действия"
   signed_in: "Вход выполнен с помощью"
+  sign_in_failed: "Не удалось войти"
   signed_out: "Выход выполнен"
   show: "Показать"
   delete: "Удалить"

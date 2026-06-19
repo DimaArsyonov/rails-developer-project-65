@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class Web::Admin::BulletinsController < Web::AdminController
+class Web::Admin::BulletinsController < Web::ApplicationController
   before_action :require_admin
-  before_action :set_bulletin, only: %i[publish reject archive]
 
   # GET /bulletins
   def index
@@ -12,6 +11,8 @@ class Web::Admin::BulletinsController < Web::AdminController
   end
 
   def publish
+    @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     if @bulletin.publish!
       redirect_back_or_to root_path, notice: t(:bulletin_published)
     else
@@ -20,6 +21,8 @@ class Web::Admin::BulletinsController < Web::AdminController
   end
 
   def reject
+    @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     if @bulletin.reject!
       redirect_back_or_to root_path, notice: t(:bulletin_rejected)
     else
@@ -28,6 +31,8 @@ class Web::Admin::BulletinsController < Web::AdminController
   end
 
   def archive
+    @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     if @bulletin.archive!
       redirect_back_or_to root_path, notice: t(:bulletin_archived)
     else
@@ -36,15 +41,6 @@ class Web::Admin::BulletinsController < Web::AdminController
   end
 
   private
-
-  def set_bulletin
-    @bulletin = Bulletin.find(params[:id])
-    authorize @bulletin
-  end
-
-  def set_categories
-    @categories = Category.all
-  end
 
   def bulletin_params
     params.require(:bulletin).permit(:title, :description, :image, :category_id)

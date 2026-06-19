@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
-class Web::Admin::CategoriesController < Web::AdminController
+class Web::Admin::CategoriesController < Web::ApplicationController
   before_action :require_admin
-  before_action :set_category, only: %i[show edit update destroy]
 
   # GET /categories
   def index
     @categories = Category.order(id: :asc).page(params[:page]).per(10)
   end
 
-  def show; end
+  def show
+    @category = Category.find(params[:id])
+  end
 
   def new
     @category = Category.new
   end
 
-  def edit; end
+  def edit
+    @category = Category.find(params[:id])
+  end
 
   def create
     @category = Category.new(category_params)
@@ -28,6 +31,7 @@ class Web::Admin::CategoriesController < Web::AdminController
   end
 
   def update
+    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t(:category_updated)
     else
@@ -36,6 +40,7 @@ class Web::Admin::CategoriesController < Web::AdminController
   end
 
   def destroy
+    @category = Category.find(params[:id])
     if @category.destroy
       redirect_to admin_categories_path, notice: t(:category_deleted)
     else
@@ -44,10 +49,6 @@ class Web::Admin::CategoriesController < Web::AdminController
   end
 
   private
-
-  def set_category
-    @category = Category.find(params[:id])
-  end
 
   def category_params
     params.require(:category).permit(:name)
