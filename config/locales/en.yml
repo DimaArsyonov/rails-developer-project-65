@@ -1,72 +1,136 @@
 en:
-  board: "Bulletin board"
-  main: "Main page"
-  sign_in: "Sign in"
-  logout: "Logout"
-  all_rights: "All rights reserved"
-  my_bulletins: "My bulletins"
-  add: "Add"
-  add_bulletin: "Add bulletin"
-  edit_bulletin: "Edit bulletin"
-  bulletins: "Bulletins"
-  categories: "Categories"
-  add_category: "Add category"
-  new_category: "New category"
-  edit_category: "Edit category"
-  name: "Name"
-  title: "Title"
-  state: "State"
-  date_created: "Date Created"
-  actions: "Actions"
-  signed_in: "Signed in with"
-  sign_in_failed: "Sign in failed"
-  signed_out: "Signed out"
-  show: "Show"
-  edit: "Edit"
-  delete: "Delete"
-  confirm_delete: "Are you sure you want to delete this category?"
-  publish: "Publish"
-  reject: "Reject"
-  archive: "Archive"
-  confirm_archive: "Are you sure you want to archive this bulletin?"
-  to_moderate: "To Moderate"
-  category_created: "Category was successfully created"
-  category_updated: "Category was successfully updated"
-  category_deleted: "Category was successfully deleted"
-  category_not_deleted: "Category was not deleted because it has bulletins"
-  bulletin_created: "Bulletin was successfully created"
-  bulletin_published: "Bulletin was successfully published"
-  bulletin_not_published: "Bulletin was not published"
-  bulletin_sent_to_moderation: "Bulletin was successfully sent to moderation"
-  bulletin_not_sent_to_moderation: "Bulletin was not sent to moderation"
-  bulletin_rejected: "Bulletin was successfully rejected"
-  bulletin_not_rejected: "Bulletin was not rejected"
-  bulletin_archived: "Bulletin was successfully archived"
-  bulletin_not_archived: "Bulletin was not archived"
-  bulletin_updated: "Bulletin was successfully updated"
-  must_be_logged_in: "You must be logged in to access this section"
-  must_be_admin: "You must be an administrator to access this section"
-  must_be_authorized_user: "You are not authorized to perform this action"
-  admin_panel: "Admin panel"
-  bulletins_on_moderate" : "Bulletins on moderate"
-  all_bulletins: "All bulletins"
-  all_categories: "All categories"
-  search_by_title: "Search by title"
-  choose_category: "Choose category"
-  search: "Search"
-  reset: "Reset"
-  by_state: "By State"
-  aasm:
-    states:
-      draft: "Draft"
-      under_moderation: "Under Moderation"
-      published: "Published"
-      rejected: "Rejected"
-      archived: "Archived"
+  concerns:
+    auth:
+      must_be_logged_in: "You must be logged in to access this section"
+      must_be_admin: "You must be an administrator to access this section"
+      must_be_authorized_user: "You are not authorized to perform this action"
+  web:
+    auth:
+      signed_in: "You are signed in"
+      sign_in_failed: "Failed to sign in"
+      signed_out: "You are signed out"
+    profiles:
+      show:
+        title: "My Bulletins"
+        add: "Add Bulletin"
+        search_by_title: "Search by Bulletin Title"
+        by_state: "By State"
+        search: "Search"
+        reset: "Reset"
+        title: "Title"
+        state: "State"
+        date_created: "Date Created"
+        actions: "Actions"
+        show: "Show"
+        edit: "Edit"
+        to_moderate: "To Moderate"
+        archive: "Archive"
+        confirm_archive: "Are you sure you want to archive this bulletin?"
+    bulletins:
+      edit:
+        edit: "Edit Bulletin"
+      index:
+        bulletins: "Bulletins"
+        choose_category: "Choose Category"
+        search: "Search"
+        reset: "Reset"
+      new:
+        add: "Add Bulletin"
+      create:
+        success: "Bulletin created successfully"
+      update:
+        success: "Bulletin updated successfully"
+      to_moderate:
+        success: "Bulletin submitted for moderation"
+        failure: "Failed to submit bulletin for moderation"
+      archive:
+        success: "Bulletin archived successfully"
+        failure: "Failed to archive bulletin"
+    admin:
+      shared:
+        sidebar:
+          bulletins_on_moderate: "Bulletins on Moderate"
+          all_bulletins: "All Bulletins"
+          all_categories: "All Categories"
+      admin:
+        index:
+          bulletins_on_moderate: "Bulletins on Moderate"
+          title: "Title"
+          date_created: "Date Created"
+          actions: "Actions"
+          publish: "Publish"
+          reject: "Reject"
+          edit: "Edit"
+          archive: "Archive"
+          confirm_archive: "Are you sure you want to archive this bulletin?"
+      bulletins:
+        index:
+          bulletins: "Bulletins"
+          search_by_title: "Search by Bulletin Title"
+          by_state: "By State"
+          search: "Search"
+          reset: "Reset"
+          title: "Title"
+          state: "State"
+          date_created: "Date Created"
+          actions: "Actions"
+          show: "Show"
+          archive: "Archive"
+          confirm_archive: "Are you sure you want to archive this bulletin?"
+        publish:
+          success: "Bulletin published successfully"
+          failure: "Failed to publish bulletin"
+        reject:
+          success: "Bulletin rejected successfully"
+          failure: "Failed to reject bulletin"
+        archive:
+          success: "Bulletin archived successfully"
+          failure: "Failed to archive bulletin"
+      categories:
+        edit:
+          edit: "Edit Category"
+        index:
+          title: "Categories"
+          add: "Add Category"
+          name: "Name"
+          actions: "Actions"
+          edit: "Edit"
+          delete: "Delete"
+          confirm_delete: "Are you sure you want to delete this category?"
+        new:
+          new: "New Category"
+        create:
+          success: "Category created successfully"
+        update:
+          success: "Category updated successfully"
+        destroy:
+          success: "Category deleted successfully"
+          failure: "Failed to delete category, as it contains bulletins"
+  layouts:
+    application:
+      board: "Bulletin Board"
+      admin_panel: "Admin Panel"
+      main: "Main"
+      my_bulletins: "My Bulletins"
+      add: "Add Bulletin"
+      logout: "Logout"
+      sign_in: "Sign In"
+      all_rights: "All Rights Reserved"
   activerecord:
     models:
-      bulletin: "bulletin"
-      category: "category"
+      bulletin: "Bulletin"
+      category: "Category"
+    attributes:
+      bulletin:
+        title: "Title"
+        description: "Description"
+        category: "Category"
+        state: "State"
+        state/under_moderation: "Under Moderation"
+        state/rejected: "Rejected"
+        state/draft: "Draft"
+        state/published: "Published"
+        state/archived: "Archived"
   helpers:
     submit:
       create: "Create %{model}"

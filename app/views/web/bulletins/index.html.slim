@@ -2,7 +2,7 @@ main.mt-4.mb-5.pb-5
   .container.p-4.align-items-center.border.shadow.bg-white.rounded-3
     .row.p-3.p-lg-5.pt-lg-0
       .mb-4
-        h2 = t(:bulletins)
+        h2 = t('.bulletins')
         hr
       .p-3.bg-light
         = search_form_for @q, url: root_path do |f|
@@ -10,7 +10,7 @@ main.mt-4.mb-5.pb-5
             .col-6
               .form-group.mb-3
                 = f.search_field :title_cont, class: "form-control string required"
-                small.form-text.text-muted = t(:search_by_title)
+                small.form-text.text-muted = t('.search_by_title')
 
             .col-4
               .form-group.mb-3
@@ -18,11 +18,11 @@ main.mt-4.mb-5.pb-5
                     @categories.map { |c| [c.name, c.id] },
                     { include_blank: true },
                     class: "form-control select required"
-                small.form-text.text-muted = t(:choose_category)
+                small.form-text.text-muted = t('.choose_category')
 
             .col-2
-              = f.submit t(:search), class: "btn btn-primary me-2", data: { disable_with: "Искать" }
-              = link_to t(:reset), root_path, class: "btn btn-outline-primary"
+              = f.submit t('.search'), class: "btn btn-primary me-2", data: { disable_with: t('.search') }
+              = link_to t('.reset'), root_path, class: "btn btn-outline-primary"
       .row.mt-2
         - @bulletins.each do |bulletin|
           .col-3.pt-2

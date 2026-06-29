@@ -14,9 +14,9 @@ class Web::Admin::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.publish!
-      redirect_back_or_to root_path, notice: t(:bulletin_published)
+      redirect_back_or_to root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t(:bulletin_not_published)
+      redirect_back_or_to root_path, alert: t('.failure')
     end
   end
 
@@ -24,9 +24,9 @@ class Web::Admin::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.reject!
-      redirect_back_or_to root_path, notice: t(:bulletin_rejected)
+      redirect_back_or_to root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t(:bulletin_not_rejected)
+      redirect_back_or_to root_path, alert: t('.failure')
     end
   end
 
@@ -34,9 +34,9 @@ class Web::Admin::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.archive!
-      redirect_back_or_to root_path, notice: t(:bulletin_archived)
+      redirect_back_or_to root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t(:bulletin_not_archived)
+      redirect_back_or_to root_path, alert: t('.failure')
     end
   end
 

@@ -37,9 +37,9 @@ class Web::BulletinsController < Web::ApplicationController
     authorize @bulletin
 
     if @bulletin.save
-      redirect_to profile_path, notice: t(:bulletin_created)
+      redirect_to profile_path, notice: t('.success')
     else
-      render :new, status: :unprocessable_content
+      render :new, alert: t('.failure'), status: :unprocessable_content
     end
   end
 
@@ -50,9 +50,9 @@ class Web::BulletinsController < Web::ApplicationController
     authorize @bulletin
 
     if @bulletin.update(bulletin_params)
-      redirect_to profile_path, notice: t(:bulletin_updated), status: :see_other
+      redirect_to profile_path, notice: t('.success'), status: :see_other
     else
-      render :edit, status: :unprocessable_content
+      render :edit, alert: t('.failure'), status: :unprocessable_content
     end
   end
 
@@ -60,9 +60,9 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.to_moderate!
-      redirect_back_or_to root_path, notice: t(:bulletin_sent_to_moderation)
+      redirect_back_or_to root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t(:bulletin_not_sent_to_moderation)
+      redirect_back_or_to root_path, alert: t('.failure')
     end
   end
 
@@ -70,9 +70,9 @@ class Web::BulletinsController < Web::ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.archive!
-      redirect_back_or_to root_path, notice: t(:bulletin_archived)
+      redirect_back_or_to root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t(:bulletin_not_archived)
+      redirect_back_or_to root_path, alert: t('.failure')
     end
   end
 

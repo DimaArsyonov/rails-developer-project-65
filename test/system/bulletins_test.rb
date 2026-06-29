@@ -18,7 +18,7 @@ class BulletinsTest < ApplicationSystemTestCase
     )
 
     visit root_path
-    click_on I18n.t(:sign_in)
+    click_on I18n.t('layouts.application.sign_in')
 
     @bulletin = bulletins(:one)
 
@@ -33,12 +33,12 @@ class BulletinsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit root_path
-    assert_selector 'h2', text: I18n.t(:bulletins)
+    assert_selector 'h2', text: I18n.t('web.bulletins.index.bulletins')
   end
 
   test 'should create bulletin' do
     visit root_path
-    click_on I18n.t(:add)
+    click_on I18n.t('layouts.application.add')
 
     fill_in I18n.t('simple_form.labels.bulletin.description'), with: @bulletin.description
     fill_in I18n.t('simple_form.labels.bulletin.title'), with: @bulletin.title
@@ -46,13 +46,13 @@ class BulletinsTest < ApplicationSystemTestCase
     find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
     click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.bulletin'))
 
-    assert_text I18n.t(:bulletin_created)
+    assert_text I18n.t('web.bulletins.create.success')
   end
 
   test 'should update Bulletin' do
     visit root_path
 
-    click_on I18n.t(:add)
+    click_on I18n.t('layouts.application.add')
 
     fill_in I18n.t('simple_form.labels.bulletin.description'), with: 'Test description'
     fill_in I18n.t('simple_form.labels.bulletin.title'), with: 'Test title'
@@ -60,12 +60,12 @@ class BulletinsTest < ApplicationSystemTestCase
     find("select[name='bulletin[category_id]']").find("option[value='#{@category.id}']").select_option
     click_on I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.bulletin'))
 
-    click_on I18n.t(:edit)
+    click_on I18n.t('web.profiles.show.edit')
 
     fill_in I18n.t('simple_form.labels.bulletin.description'), with: @bulletin.description
     fill_in I18n.t('simple_form.labels.bulletin.title'), with: @bulletin.title
     click_on I18n.t('helpers.submit.update', model: I18n.t('activerecord.models.bulletin'))
 
-    assert_text I18n.t(:bulletin_updated)
+    assert_text I18n.t('web.bulletins.update.success')
   end
 end

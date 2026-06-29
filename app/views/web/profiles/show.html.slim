@@ -3,59 +3,59 @@
     .row
       .p-3.p-lg-5.pt-lg-0
         .mb-4
-          h2 = t(:my_bulletins)
+          h2 = t('.title')
           hr
 
-        = link_to t(:add_bulletin), new_bulletin_path
+        = link_to t('.add'), new_bulletin_path
 
         = search_form_for @q, url: profile_path do |f|
           .row.my-2
             .col-6
               .form-group.mb-3
                 = f.search_field :title_cont, class: "form-control string required"
-                small.form-text.text-muted = t(:search_by_title)
+                small.form-text.text-muted = t('.search_by_title')
 
             .col-4
               .form-group.mb-3
                 = f.select :state_eq,
-                    Bulletin.aasm.states.map { |state| [t("aasm.states.#{state.name}"), state.name]},
+                    Bulletin.aasm.states.map { |state| [Bulletin.human_attribute_name("state/#{state.name}"), state.name]},
                     { include_blank: true },
                     class: "form-control select required"
-                small.form-text.text-muted = t(:by_state)
+                small.form-text.text-muted = t('.by_state')
 
             .col-2
-              = f.submit t(:search), class: "btn btn-primary me-2", data: { disable_with: "Искать" }
-              = link_to t(:reset), profile_path, class: "btn btn-outline-primary"
+              = f.submit t('.search'), class: "btn btn-primary me-2", data: { disable_with: t('.search') }
+              = link_to t('.reset'), profile_path, class: "btn btn-outline-primary"
 
         .row.mt-2
           table.table.table-borderless
             thead
               tr
-                th = t(:title)
-                th = t(:state)
-                th = t(:date_created)
-                th = t(:actions)
+                th = t('.title')
+                th = t('.state')
+                th = t('.date_created')
+                th = t('.actions')
             tbody
               - @bulletins.each do |bulletin|
                 tr
                   td = bulletin.title
-                  td = t("aasm.states.#{bulletin.state}")
+                  td = Bulletin.human_attribute_name("state/#{bulletin.state}")
                   td = time_ago_in_words(bulletin.created_at)
 
                   td
-                    = link_to t(:show), bulletin_path(bulletin), class: 'me-2'
-                    = link_to t(:edit), edit_bulletin_path(bulletin), class: 'me-2'
+                    = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
+                    = link_to t('.edit'), edit_bulletin_path(bulletin), class: 'me-2'
 
                     - if bulletin.may_to_moderate?
-                      = link_to t(:to_moderate),
+                      = link_to t('.to_moderate'),
                         to_moderate_bulletin_path(bulletin),
                         data: { turbo_method: :patch },
                         class: 'me-2'
 
                     - if bulletin.may_archive?
-                      = link_to t(:archive),
+                      = link_to t('.archive'),
                         archive_admin_bulletin_path(bulletin),
-                        data: { turbo_method: :patch, turbo_confirm: t(:confirm_archive) },
+                        data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') },
                         class: 'text-danger'
           .mt-3
             = paginate @bulletins, theme: "bootstrap-5"
