@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-class Web::Admin::BulletinsController < Web::ApplicationController
-  before_action :require_admin
-
-  # GET /bulletins
+class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   def index
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
@@ -13,36 +10,34 @@ class Web::Admin::BulletinsController < Web::ApplicationController
   def publish
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.publish!
-      redirect_back_or_to root_path, notice: t('.success')
+
+    if @bulletin.may_publish?
+      @bulletin.publish!
+      redirect_to admin_root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t('.failure')
+      redirect_to admin_root_path, alert: t('.failure')
     end
   end
 
   def reject
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.reject!
-      redirect_back_or_to root_path, notice: t('.success')
+    if @bulletin.may_reject?
+      @bulletin.reject!
+      redirect_to admin_root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t('.failure')
+      redirect_to admin_root_path, alert: t('.failure')
     end
   end
 
   def archive
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.archive!
-      redirect_back_or_to root_path, notice: t('.success')
+    if @bulletin.may_archive?
+      @bulletin.archive!
+      redirect_to admin_root_path, notice: t('.success')
     else
-      redirect_back_or_to root_path, alert: t('.failure')
+      redirect_to admin_root_path, alert: t('.failure')
     end
-  end
-
-  private
-
-  def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :image, :category_id)
   end
 end

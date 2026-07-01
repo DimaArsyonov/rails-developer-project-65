@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-class Web::Admin::CategoriesController < Web::ApplicationController
-  before_action :require_admin
-
-  # GET /categories
+class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def index
     @categories = Category.order(id: :asc).page(params[:page]).per(10)
   end

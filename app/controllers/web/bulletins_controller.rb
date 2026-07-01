@@ -59,7 +59,8 @@ class Web::BulletinsController < Web::ApplicationController
   def to_moderate
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.to_moderate!
+    if @bulletin.may_to_moderate?
+      @bulletin.to_moderate!
       redirect_back_or_to root_path, notice: t('.success')
     else
       redirect_back_or_to root_path, alert: t('.failure')
@@ -69,7 +70,8 @@ class Web::BulletinsController < Web::ApplicationController
   def archive
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.archive!
+    if @bulletin.may_archive?
+      @bulletin.archive!
       redirect_back_or_to root_path, notice: t('.success')
     else
       redirect_back_or_to root_path, alert: t('.failure')
