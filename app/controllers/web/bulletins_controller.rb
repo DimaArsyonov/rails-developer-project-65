@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Web::BulletinsController < Web::ApplicationController
-  before_action :require_login, only: %i[new create edit to_moderate archive]
+  before_action :require_login, only: %i[new create edit update to_moderate archive]
 
   # GET /bulletins or /bulletins.json
   def index
@@ -39,7 +39,7 @@ class Web::BulletinsController < Web::ApplicationController
     if @bulletin.save
       redirect_to profile_path, notice: t('.success')
     else
-      render :new, alert: t('.failure'), status: :unprocessable_content
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -52,7 +52,7 @@ class Web::BulletinsController < Web::ApplicationController
     if @bulletin.update(bulletin_params)
       redirect_to profile_path, notice: t('.success'), status: :see_other
     else
-      render :edit, alert: t('.failure'), status: :unprocessable_content
+      render :edit, status: :unprocessable_content
     end
   end
 

@@ -27,6 +27,9 @@ en:
         archive: "Archive"
         confirm_archive: "Are you sure you want to archive this bulletin?"
     bulletins:
+      must_be_logged_in: "You must be logged in to access this section"
+      must_be_admin: "You must be an administrator to access this section"
+      must_be_authorized_user: "You are not authorized to perform this action"
       edit:
         edit: "Edit Bulletin"
       index:
