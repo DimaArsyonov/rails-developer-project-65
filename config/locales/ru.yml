@@ -11,7 +11,7 @@ ru:
       signed_out: "Выход выполнен"
     profiles:
       show:
-        title: "Мои объявления"
+        my_bulletins: "Мои объявления"
         add: "Добавить объявление"
         search_by_title: "Искать по названию объявления"
         by_state: "По состоянию"

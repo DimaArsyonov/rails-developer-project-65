@@ -11,7 +11,7 @@ en:
       signed_out: "You are signed out"
     profiles:
       show:
-        title: "My Bulletins"
+        my_bulletins: "My Bulletins"
         add: "Add Bulletin"
         search_by_title: "Search by Bulletin Title"
         by_state: "By State"

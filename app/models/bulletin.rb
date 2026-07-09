@@ -15,7 +15,7 @@ class Bulletin < ApplicationRecord
                     size: { less_than_or_equal_to: 5.megabytes }
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[title description image category created_at updated_at state category_id user_id]
+    %w[title description category created_at updated_at state category_id user_id]
   end
 
   def self.ransackable_associations(_auth_object = nil)

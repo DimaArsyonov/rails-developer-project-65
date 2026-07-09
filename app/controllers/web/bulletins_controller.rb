@@ -5,7 +5,6 @@ class Web::BulletinsController < Web::ApplicationController
 
   # GET /bulletins or /bulletins.json
   def index
-    @categories = Category.all
     @q = Bulletin.ransack(params[:q])
     @bulletins = @q.result.published.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -19,13 +18,11 @@ class Web::BulletinsController < Web::ApplicationController
   # GET /bulletins/new
   def new
     @bulletin = Bulletin.new
-    @categories = Category.all
     authorize @bulletin
   end
 
   # GET /bulletins/1/edit
   def edit
-    @categories = Category.all
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
   end
@@ -33,7 +30,6 @@ class Web::BulletinsController < Web::ApplicationController
   # POST /bulletins or /bulletins.json
   def create
     @bulletin = current_user.bulletins.build(bulletin_params)
-    @categories = Category.all
     authorize @bulletin
 
     if @bulletin.save
@@ -45,7 +41,6 @@ class Web::BulletinsController < Web::ApplicationController
 
   # PATCH/PUT /bulletins/1 or /bulletins/1.json
   def update
-    @categories = Category.all
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
 

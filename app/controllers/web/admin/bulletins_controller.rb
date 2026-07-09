@@ -9,7 +9,6 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
 
   def publish
     @bulletin = Bulletin.find(params[:id])
-    authorize @bulletin
 
     if @bulletin.may_publish?
       @bulletin.publish!
@@ -21,7 +20,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
 
   def reject
     @bulletin = Bulletin.find(params[:id])
-    authorize @bulletin
+
     if @bulletin.may_reject?
       @bulletin.reject!
       redirect_to admin_root_path, notice: t('.success')

@@ -21,7 +21,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to admin_categories_path, notice: t('.category_created')
+      redirect_to admin_categories_path, notice: t('.success')
     else
       render :new, status: :unprocessable_content
     end
@@ -30,7 +30,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: t('.category_updated')
+      redirect_to admin_categories_path, notice: t('.success')
     else
       render :edit, status: :unprocessable_content
     end
@@ -39,9 +39,9 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
   def destroy
     @category = Category.find(params[:id])
     if @category.destroy
-      redirect_to admin_categories_path, notice: t('.category_deleted')
+      redirect_to admin_categories_path, notice: t('.success')
     else
-      redirect_to admin_categories_path, alert: t('.category_not_deleted')
+      redirect_to admin_categories_path, alert: t('.failure')
     end
   end
 

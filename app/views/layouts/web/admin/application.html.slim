@@ -1,0 +1,10 @@
+- content_for :content do
+  .container
+    .row
+      .col-md-3
+        = render 'web/admin/shared/sidebar'
+
+      .col-md-9
+        = yield
+
+= render template: 'layouts/application'

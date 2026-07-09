@@ -15,24 +15,21 @@ html
     .container.mb-2
       .d-flex.flex-wrap.align-items-center.py-2.border-bottom
         .navbar.navbar-expand-md.navbar-light.me-auto
-          a.navbar-brand.me-md-4 href="/" = t('.board')
+          = link_to t('.board'), root_path, class: 'navbar-brand me-md-4'
 
           .collapse.navbar-collapse#navbarToggler
             ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
+              li.nav-item.me-2
+                = link_to t('.main'), root_path, class: 'nav-link text-dark'
               - if current_user
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/" = t('.main')
+                  = link_to t('.my_bulletins'), profile_path, class: 'nav-link text-dark'
                 li.nav-item.me-2
-                  a.nav-link.text-dark href="/profile" = t('.my_bulletins')
-                li.nav-item.me-2
-                  a.nav-link.text-dark href="/bulletins/new" = t('.add')
-              - else
-                li.nav-item.me-2
-                  a.nav-link.text-dark href="/" = t('.main')
+                  = link_to t('.add'), new_bulletin_path, class: 'nav-link text-dark'
         ul.nav.nav-pills
           - if current_user&.admin?
             li.nav-item.me-2.ms-auto
-              a.nav-link.text-dark href="/admin" = t('.admin_panel')
+              = link_to t('.admin_panel'), admin_root_path, class: 'nav-link text-dark'
           li.nav-item.me-2
             - if current_user
               = button_to "#{t('.logout')}", logout_path, method: :delete, class: "btn btn-danger"
@@ -41,7 +38,10 @@ html
                 span.bi.bi-github.me-2
                 = t('.sign_in')
   = render 'shared/flash'
-  = yield
+  - if content_for?(:content)
+    = yield :content
+  - else
+    = yield
   footer.footer.mt-auto.py-3.bg-light
       .container
         span.text-muted © #{Time.current.year} #{t('.board')}. #{t('.all_rights')}

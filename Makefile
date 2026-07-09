@@ -8,4 +8,6 @@ db-setup:
 start:
 	bundle exec rails s
 test:
-	bundle exec rspec
+	bin/rails test
+test-system:
+	bin/rails test:system

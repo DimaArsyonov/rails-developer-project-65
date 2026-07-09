@@ -3,7 +3,7 @@
     .row
       .p-3.p-lg-5.pt-lg-0
         .mb-4
-          h2 = t('.title')
+          h2 = t('.my_bulletins')
           hr
 
         = link_to t('.add'), new_bulletin_path
@@ -54,7 +54,7 @@
 
                     - if bulletin.may_archive?
                       = link_to t('.archive'),
-                        archive_admin_bulletin_path(bulletin),
+                        archive_bulletin_path(bulletin),
                         data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') },
                         class: 'text-danger'
           .mt-3
