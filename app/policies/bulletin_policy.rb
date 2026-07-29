@@ -14,22 +14,28 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    @user&.admin? || @record.published? || @record.user_id == @user&.id
+    @user&.admin? || @record.published? || author?
   end
 
   def edit?
-    @record.user_id == @user&.id || @user&.admin?
+    author? || @user&.admin?
   end
 
   def update?
-    @record.user_id == @user&.id || @user&.admin?
+    author? || @user&.admin?
   end
 
   def to_moderate?
-    @record.user_id == @user&.id || @user&.admin?
+    author? || @user&.admin?
   end
 
   def archive?
-    @record.user_id == @user&.id || @user&.admin?
+    author? || @user&.admin?
+  end
+
+  private
+
+  def author?
+    @record.user_id == @user&.id
   end
 end
